@@ -1,27 +1,28 @@
-import sequelize from "../config/db";
+import { DataTypes } from "sequelize";
+import sequelize from "../config/db.js";
 
 const UserModel = sequelize.define(
     "user",
     {
         id: {
-            type: sequelize.DataTypes.INTEGER,
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
         },
         userName: {
-            type: sequelize.DataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         email: {
-            type: sequelize.DataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         password: {
-            type: sequelize.DataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         level: {
-            type: sequelize.DataTypes.ENUM("LOW", "MEDIUM", "HIGH"),
+            type: DataTypes.ENUM("LOW", "MEDIUM", "HIGH"),
             allowNull: false,
             defaultValue: "LOW"
         }

@@ -4,7 +4,10 @@ import app from './src/app.js'
 
 sequelize.authenticate().then(() => {
     console.log('Connection has been established successfully.');
-    app.listen(env.PORT, () => {
-        console.log(`Server listening on port ${env.PORT}`)
+    sequelize.sync({ alter: true }).then(() => {
+        console.log('Tables created.');
+        app.listen(env.PORT, () => {
+            console.log(`Server listening on port ${env.PORT}`)
+        })
     })
 })
