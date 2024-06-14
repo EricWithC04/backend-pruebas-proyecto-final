@@ -1,4 +1,4 @@
-import ThemeModel from "../models/Theme.model";
+import ThemeModel from "../models/Theme.model.js";
 
 export const findAllThemes = async () => {
     const allThemes = await ThemeModel.find()

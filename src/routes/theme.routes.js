@@ -5,7 +5,7 @@ import {
     createTheme,
     updateTheme,
     deleteTheme
-} from "../controllers/theme.controllers";
+} from "../controllers/theme.controllers.js";
 
 const router = Router();
 
