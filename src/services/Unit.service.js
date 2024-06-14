@@ -1,8 +1,13 @@
 import UnitModel from "../models/Unit.model";
 
-export const findUnitsModel = async () => {
+export const findAllUnits = async () => {
     const allUnits = await UnitModel.find()
     return allUnits
+}
+
+export const getUnitById = async (id) => {
+    const oneUnit = await UnitModel.findByPk(id);
+    return oneUnit;
 }
 
 export const createUnitModel = async (data) => {

@@ -1,8 +1,13 @@
 import ExerciseModel from "../models/Exercise.model";
 
-export const findExercisesModel = async () => {
+export const findAllExercises = async () => {
     const allExercises = await ExerciseModel.find()
     return allExercises
+}
+
+export const getExerciseById = async (id) => {
+    const oneExercise = await ExerciseModel.findByPk(id);
+    return oneExercise;
 }
 
 export const createExerciseModel = async (data) => {

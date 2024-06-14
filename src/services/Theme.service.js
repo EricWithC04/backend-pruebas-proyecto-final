@@ -1,8 +1,13 @@
 import ThemeModel from "../models/Theme.model";
 
-export const findThemesModel = async () => {
+export const findAllThemes = async () => {
     const allThemes = await ThemeModel.find()
     return allThemes
+}
+
+export const getThemeById = async (id) => {
+    const oneTheme = await ThemeModel.findByPk(id);
+    return oneTheme;
 }
 
 export const createThemeModel = async (data) => {
