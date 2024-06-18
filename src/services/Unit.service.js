@@ -1,7 +1,7 @@
 import UnitModel from "../models/Unit.model.js";
 
 export const findAllUnits = async () => {
-    const allUnits = await UnitModel.find()
+    const allUnits = await UnitModel.findAll()
     return allUnits
 }
 
