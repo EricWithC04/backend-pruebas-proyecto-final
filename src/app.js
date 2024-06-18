@@ -4,8 +4,16 @@ import userRouter from './routes/user.routes.js'
 import unitRouter from './routes/unit.routes.js'
 import themeRouter from './routes/theme.routes.js'
 import exerciseRouter from './routes/exercise.routes.js'
+import cors from 'cors'
+import morgan from 'morgan'
+import helmet from 'helmet'
 
 const app = Express()
+
+app.use(cors())
+app.use(morgan('dev'))
+app.use(helmet())
+app.use(Express.json())
 
 app.use('/example', exampleRouter)
 app.use('/user', userRouter)
