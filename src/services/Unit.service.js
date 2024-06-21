@@ -1,7 +1,13 @@
 import UnitModel from "../models/Unit.model.js";
+import ThemeModel from "../models/Theme.model.js";
 
 export const findAllUnits = async () => {
-    const allUnits = await UnitModel.findAll()
+    const allUnits = await UnitModel.findAll({
+        include: {
+            model: ThemeModel,
+            attributes: ["id", "name", "description"],
+        },
+    })
     return allUnits
 }
 
