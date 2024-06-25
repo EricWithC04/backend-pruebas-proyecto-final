@@ -1,0 +1,130 @@
+# Algoritmos Más Utilizados
+
+## Introducción
+
+En la ciencia de la computación, existen varios algoritmos fundamentales que se utilizan para resolver una amplia variedad de problemas. Conocer estos algoritmos y sus aplicaciones es esencial para cualquier persona que trabaje en el campo de la programación y el desarrollo de software. En esta clase, exploraremos algunos de los algoritmos más utilizados y comprenderemos su importancia y aplicaciones prácticas.
+
+## 1. Algoritmos de Búsqueda
+
+### 1.1 Búsqueda Lineal
+
+La búsqueda lineal es un algoritmo sencillo que se utiliza para encontrar un elemento en una lista recorriendo cada elemento uno por uno.
+
+```python
+def busqueda_lineal(lista, objetivo):
+    for i in range(len(lista)):
+        if lista[i] == objetivo:
+            return i
+    return -1
+```
+
+#### Complejidad: `O(n)`
+
+### 1.2 Búsqueda Binaria
+
+La búsqueda binaria es un algoritmo eficiente para listas ordenadas, que encuentra un elemento dividiendo repetidamente la lista en mitades.
+
+```python
+def busqueda_binaria(lista, objetivo):
+    bajo = 0
+    alto = len(lista) - 1
+    while bajo <= alto:
+        medio = (bajo + alto) // 2
+        if lista[medio] == objetivo:
+            return medio
+        elif lista[medio] < objetivo:
+            bajo = medio + 1
+        else:
+            alto = medio - 1
+    return -1
+```
+
+#### Complejidad: `O(log n)`
+
+## 2. Algoritmos de Ordenamiento
+
+### 2.1 Ordenamiento por Burbuja
+
+El ordenamiento por burbuja es un algoritmo simple que ordena una lista comparando elementos adyacentes y cambiándolos si están en el orden incorrecto.
+
+```python
+def ordenamiento_burbuja(lista):
+    n = len(lista)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if lista[j] > lista[j+1]:
+                lista[j], lista[j+1] = lista[j+1], lista[j]
+    return lista
+```
+
+#### Complejidad: `O(n^2)`
+
+### 2.2 Ordenamiento Rápido (Quicksort)
+
+Quicksort es un algoritmo de ordenamiento eficiente que utiliza el método de divide y vencerás.
+
+```python
+def quicksort(lista):
+    if len(lista) <= 1:
+        return lista
+    else:
+        pivote = lista[0]
+        menores = [x for x in lista[1:] if x <= pivote]
+        mayores = [x for x in lista[1:] if x > pivote]
+        return quicksort(menores) + [pivote] + quicksort(mayores)
+```
+
+#### Complejidad: `O(n log n)` en promedio
+
+## 3. Algoritmos de Grafos
+
+### 3.1 Algoritmo de Dijkstra
+
+El algoritmo de Dijkstra se utiliza para encontrar el camino más corto desde un nodo a todos los demás nodos en un grafo con pesos no negativos.
+
+```python
+import heapq
+
+def dijkstra(grafo, inicio):
+    distancias = {nodo: float('inf') for nodo in grafo}
+    distancias[inicio] = 0
+    cola_prioridad = [(0, inicio)]
+    while cola_prioridad:
+        distancia_actual, nodo_actual = heapq.heappop(cola_prioridad)
+        if distancia_actual > distancias[nodo_actual]:
+            continue
+        for vecino, peso in grafo[nodo_actual].items():
+            distancia = distancia_actual + peso
+            if distancia < distancias[vecino]:
+                distancias[vecino] = distancia
+                heapq.heappush(cola_prioridad, (distancia, vecino))
+    return distancias
+```
+
+#### Complejidad: `O((V + E) log V)`
+
+### 3.2 Algoritmo de Floyd-Warshall
+
+El algoritmo de Floyd-Warshall se utiliza para encontrar las distancias más cortas entre todos los pares de nodos en un grafo.
+
+```python
+def floyd_warshall(grafo):
+    dist = dict(grafo)
+    for k in grafo:
+        for i in grafo:
+            for j in grafo:
+                if dist[i][j] > dist[i][k] + dist[k][j]:
+                    dist[i][j] = dist[i][k] + dist[k][j]
+    return dist
+```
+
+#### Complejidad: `O(V^3)`
+
+## Conclusión
+
+Conocer y entender estos algoritmos fundamentales es crucial para resolver problemas comunes de manera eficiente. Los algoritmos de búsqueda, ordenamiento y grafos tienen aplicaciones prácticas en diversas áreas, desde la manipulación de datos hasta la optimización de rutas. En las próximas clases, exploraremos más a fondo algunos de estos algoritmos y sus implementaciones.
+
+---
+
+**Autor:** Eric Alejandro Mercado  
+**Fecha:** 23 de Junio, 2024

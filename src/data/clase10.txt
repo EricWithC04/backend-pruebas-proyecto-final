@@ -1,0 +1,134 @@
+# Obtención de datos a partir de archivos CSV
+
+Los archivos CSV (Comma-Separated Values) son un tipo de formato de archivo utilizado
+para almacenar datos tabulares en forma de texto plano. En un archivo CSV, cada línea
+representa una fila de datos, y los valores de cada fila están separados por un delimitador, comúnmente una coma. Sin embargo, otros delimitadores como el punto y coma (;) o el
+tabulador (\t) también se utilizan en algunos casos.  
+
+El formato CSV es ampliamente utilizado en diversos campos, desde la gestión de bases de
+datos hasta la investigación científica y el análisis de datos. Su popularidad se debe a su
+simplicidad, facilidad de lectura y compatibilidad con una amplia gama de programas y
+herramientas de software.  
+
+Los archivos CSV son importantes porque permiten la fácil intercambiabilidad de datos entre
+diferentes aplicaciones y sistemas. Además, son ideales para almacenar conjuntos de datos
+estructurados, como datos de ventas, registros financieros, datos meteorológicos, listas de
+contactos y más.  
+
+La obtención de datos a partir de archivos CSV implica leer y procesar los datos
+almacenados en estos archivos para su posterior análisis, visualización o manipulación. Al utilizar archivos CSV, los analistas de datos y los científicos pueden acceder fácilmente a
+conjuntos de datos estructurados y realizar análisis exploratorios, modelado estadístico, generación de informes y toma de decisiones fundamentadas en los datos.  
+
+### Uso de la función open
+
+Al utilizar la función open() en Python para abrir un archivo, podemos especificar varios
+parámetros para controlar cómo se abre y maneja el archivo:
+![limpieza_y_estructura_de_los_datos_1](https://res.cloudinary.com/du2qoqncg/image/upload/v1719150591/limpieza_estructura_datos_1_o462pg.jpg)
+
+**Nombre de archivo (obligatorio):** Especifica el nombre o la ruta del archivo que se va a abrir.  
+
+**Modo (obligatorio):** Especifica el modo de apertura del archivo. Algunos modos comunes son:  
+
+'r': Solo lectura (por defecto).
+'w': Escritura, trunca el archivo si ya existe o crea uno nuevo.
+'a': Escritura, añade contenido al final del archivo si ya existe o crea uno nuevo.
+'rb', 'wb', 'ab': Modos binarios, para leer o escribir archivos binarios.  
+
+**Codificación (opcional):** Especifica la codificación de caracteres a utilizar al leer o escribir
+el archivo. Por ejemplo, 'utf-8', 'latin-1', 'ascii', etc.  
+
+**Buffering (opcional):** Controla si se utiliza el almacenamiento intermedio (buffering) al leer
+o escribir datos en el archivo. Los valores comunes son:
+0: Sin buffering. 1: Buffer de línea (por defecto). Número entero mayor que 1: Tamaño del búfer en bytes.  
+
+**Newline (opcional):** Controla cómo se manejan los saltos de línea en archivos de texto. Puede ser None, '', '\n', '\r', o '\r\n'. 
+
+### Uso de la librería CSV
+
+La biblioteca **csv** de Python proporciona varias opciones y parámetros que podemos utilizar
+para personalizar cómo se lee y escribe en archivos CSV. Los parámetros más comunes
+que podemos encontrar al utilizar la función csv.reader() y csv.writer() son las siguientes:  
+
+**fileobj:** Este parámetro es obligatorio y representa el objeto archivo (file object) que se
+utilizará para leer o escribir datos CSV. Puede ser un objeto de archivo devuelto por la
+función open() o cualquier otro objeto que sea compatible con el protocolo de archivo en
+Python.  
+
+**delimiter:** Especifica el carácter utilizado para separar los campos en el archivo CSV. Por
+defecto, el delimitador es una coma (','), pero se puede especificar cualquier carácter, como
+punto y coma (';') o tabulación ('\t').  
+
+**quotechar:** Especifica el carácter utilizado para encerrar los campos que contienen
+caracteres especiales, como el delimitador. Por defecto, el carácter de cita es una comilla
+doble ('"'), pero también se pueden especificar otros caracteres.
+
+**quoting:** Controla la estrategia de citado de campos. Puede tomar uno de los siguientes
+valores:  
+csv.QUOTE_MINIMAL: Solo cita campos que contienen caracteres especiales como el
+delimitador. Este es el valor por defecto.  
+csv.QUOTE_ALL: Cita todos los campos.  
+csv.QUOTE_NONNUMERIC: Cita todos los campos que no son números.  
+csv.QUOTE_NONE: No cita ningún campo.  
+
+**escapechar:** Especifica el carácter utilizado para escapar de los caracteres especiales en el archivo CSV. Por defecto, el carácter de escape es None, lo que significa que no se utiliza ningún carácter de escape.  
+
+**newline:** Especifica el carácter de nueva línea a utilizar al escribir en el archivo CSV. Puede
+ser None (usar el valor predeterminado del sistema operativo), '' (ninguna nueva línea) o
+cualquier cadena de caracteres que represente un carácter de nueva línea, como '\n'.
+
+### Leyendo archivos CSV en Python
+
+```python
+with open('localidades.csv', newline='') as archivo_csv:
+lector_csv = csv.reader(archivo_csv, delimiter=',', quotechar='"')
+for fila in lector_csv:
+print(fila)
+```
+### Escribiendo archivos CSV en Python
+
+```python
+# Datos a escribir en el archivo CSV
+data = [
+['Localidad', 'Provincia'],
+['Buenos Aires', 'Buenos Aires'],
+['Córdoba', 'Córdoba'],
+['Rosario', 'Santa Fe']
+]
+# Abrir el archivo CSV en modo escritura
+with open('localidades_nuevas.csv', mode='w', newline='') as file:
+# Crear un escritor CSV
+writer = csv.writer(file)
+# Escribir los datos en el archivo
+writer.writerows(data)
+```
+
+### Lectura de un archivo CSV y acceder en forma de lista:
+
+```python
+# Abrir el archivo CSV en modo lectura
+with open('localidades.csv', mode='r') as file:
+    # Crear un lector CSV
+    reader = csv.reader(file)
+    # Iterar sobre cada fila en el archivo
+    for row in reader:
+        print(row[0]) # Imprimir el primer elemento de cada fila (columna 'provincia')
+```
+
+### Lectura de un archivo CSV en forma de diccionario:
+
+```python
+# Abrir el archivo CSV en modo lectura
+with open('localidades.csv', mode='r') as file:
+# Crear un lector CSV que devuelve un diccionario por fila
+reader = csv.DictReader(file)
+# Iterar sobre cada fila en el archivo
+for row in reader:
+print(row['localidad'], row['provincia'])
+```
+
+**Nota: Uso de la palabra reservada with**  
+
+La palabra reservada with en Python se utiliza en el contexto de la gestión de recursos, especialmente en la apertura y el manejo de archivos, conexiones de red y conexiones a
+bases de datos. Su propósito principal es asegurar que los recursos sean gestionados de
+manera segura y eficiente, liberando automáticamente los recursos una vez que ya no son
+necesarios, incluso en caso de excepciones.

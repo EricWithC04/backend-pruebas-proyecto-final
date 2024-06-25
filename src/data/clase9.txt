@@ -1,0 +1,46 @@
+# Limpieza y estructura de los datos
+
+La limpieza de datos es una tarea crucial en el proceso de analítica avanzada. Si los datos
+no están limpios, los resultados del análisis pueden ser inexactos y llevar a decisiones
+equivocadas. Python es uno de los lenguajes de programación más utilizados en el mundo
+de la analítica avanzada y la ciencia de datos, por lo que es una herramienta poderosa para
+la limpieza de datos. 
+
+### Pasos para la limpieza de datos:
+
+**Identificar y eliminar valores atípicos o valores faltantes:**  
+
+Este paso implica la identificación de valores atípicos o missing values (valores faltantes) en
+el conjunto de datos. Los valores atípicos son observaciones inusuales que difieren
+significativamente del resto de los datos, mientras que los valores faltantes son aquellos
+para los cuales no se registra ningún valor. La eliminación de estos valores ayuda a
+garantizar la precisión y la integridad de los datos. 
+
+**Eliminar datos duplicados:**  
+
+En esta etapa, se identifican y eliminan registros duplicados en el conjunto de datos. La
+presencia de datos duplicados puede distorsionar el análisis y conducir a conclusiones
+incorrectas. Al eliminar estos duplicados, se garantiza que cada observación sea única y
+que no haya redundancia de información. 
+
+**Convertir los datos en el formato adecuado:**  
+A veces, los datos pueden estar en formatos incorrectos o inconsistentes. En este paso, se
+realiza la conversión de los datos al formato adecuado según las necesidades del análisis. Esto puede incluir la conversión de tipos de datos (por ejemplo, de texto a numérico) o la
+estandarización de formatos (por ejemplo, fechas en diferentes formatos). 
+
+**Normalizar los datos:**  
+La normalización de datos implica escalar los valores de los datos a un rango específico, lo
+que facilita la comparación y el análisis. Esto es especialmente importante cuando se
+trabaja con variables que tienen diferentes unidades o escalas. La normalización asegura
+que todas las variables contribuyan de manera equitativa al análisis. 
+
+**Verificar la consistencia de los datos:**  
+En esta etapa, se verifica la consistencia de los datos para identificar posibles errores o
+inconsistencias. Esto puede incluir la validación de rangos de valores, la coherencia entre
+variables relacionadas y la identificación de datos que contradicen las reglas establecidas. 
+
+**Verificar la validez de los datos:**  
+Finalmente, se verifica la validez de los datos para asegurarse de que sean precisos y
+representen con precisión el fenómeno o proceso que se está estudiando. Esto puede
+implicar la comparación de los datos con fuentes externas confiables o la validación cruzada
+con otros conjuntos de datos.

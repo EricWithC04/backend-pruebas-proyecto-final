@@ -1,0 +1,114 @@
+# Introducción a la Notación Asintótica
+
+## Introducción
+
+La notación asintótica es una herramienta fundamental en el análisis de algoritmos, que nos permite describir la eficiencia de un algoritmo de manera abstracta y general. En esta clase, exploraremos los conceptos básicos de la notación asintótica, sus tipos y cómo se utilizan para evaluar el rendimiento de los algoritmos.
+
+## ¿Qué es la Notación Asintótica?
+
+La notación asintótica se utiliza para describir el comportamiento de un algoritmo cuando el tamaño de la entrada tiende al infinito. Nos ayuda a entender cómo crece el tiempo de ejecución o el uso de memoria de un algoritmo en función del tamaño de la entrada. La notación asintótica ignora los factores constantes y se enfoca en el comportamiento a largo plazo.
+
+## Tipos de Notación Asintótica
+
+### Notación Big-O (O)
+
+La notación Big-O describe el límite superior del tiempo de ejecución de un algoritmo en el peor caso. Nos da una idea del peor rendimiento posible que puede tener un algoritmo.
+
+- **Definición:** `f(n) = O(g(n))` si existen constantes `c > 0` y `n0` tales que `f(n) <= c * g(n)` para todo `n >= n0`.
+- **Ejemplo:** Para una función `f(n) = 3n^2 + 2n + 1`, `f(n) = O(n^2)`.
+
+### Notación Omega (Ω)
+
+La notación Omega describe el límite inferior del tiempo de ejecución de un algoritmo en el mejor caso. Nos da una idea del mejor rendimiento posible que puede tener un algoritmo.
+
+- **Definición:** `f(n) = Ω(g(n))` si existen constantes `c > 0` y `n0` tales que `f(n) >= c * g(n)` para todo `n >= n0`.
+- **Ejemplo:** Para una función `f(n) = 3n^2 + 2n + 1`, `f(n) = Ω(n^2)`.
+
+### Notación Theta (Θ)
+
+La notación Theta describe el tiempo de ejecución de un algoritmo cuando está acotado tanto superior como inferiormente. Nos da una idea del rendimiento promedio de un algoritmo.
+
+- **Definición:** `f(n) = Θ(g(n))` si existen constantes `c1, c2 > 0` y `n0` tales que `c1 * g(n) <= f(n) <= c2 * g(n)` para todo `n >= n0`.
+- **Ejemplo:** Para una función `f(n) = 3n^2 + 2n + 1`, `f(n) = Θ(n^2)`.
+
+## Ejemplos Prácticos
+
+### Ejemplo 1: Búsqueda Lineal
+
+#### Código
+
+```python
+def busqueda_lineal(lista, objetivo):
+    for i in range(len(lista)):
+        if lista[i] == objetivo:
+            return i
+    return -1
+```
+
+#### Análisis
+
+- **Peor Caso:** `O(n)`
+- **Mejor Caso:** `Ω(1)`
+- **Caso Promedio:** `Θ(n/2)`, que se simplifica a `Θ(n)`
+
+### Ejemplo 2: Búsqueda Binaria
+
+#### Código
+
+```python
+def busqueda_binaria(lista, objetivo):
+    bajo = 0
+    alto = len(lista) - 1
+    while bajo <= alto:
+        medio = (bajo + alto) // 2
+        if lista[medio] == objetivo:
+            return medio
+        elif lista[medio] < objetivo:
+            bajo = medio + 1
+        else:
+            alto = medio - 1
+    return -1
+```
+
+#### Análisis
+
+- **Peor Caso:** `O(log n)`
+- **Mejor Caso:** `Ω(1)`
+- **Caso Promedio:** `Θ(log n)`
+
+### Ejemplo 3: Ordenamiento por Burbuja
+
+#### Código
+
+```python
+def ordenamiento_burbuja(lista):
+    n = len(lista)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if lista[j] > lista[j+1]:
+                lista[j], lista[j+1] = lista[j+1], lista[j]
+    return lista
+```
+
+#### Análisis
+
+- **Peor Caso:** `O(n^2)`
+- **Mejor Caso:** `Ω(n)` (cuando la lista ya está ordenada)
+- **Caso Promedio:** `Θ(n^2)`
+
+## Comparación de Notaciones
+
+| Algoritmo               | Peor Caso `O` | Mejor Caso `Ω` | Caso Promedio `Θ` |
+|-------------------------|---------------|----------------|--------------------|
+| Búsqueda Lineal         | `O(n)`        | `Ω(1)`         | `Θ(n)`             |
+| Búsqueda Binaria        | `O(log n)`    | `Ω(1)`         | `Θ(log n)`         |
+| Ordenamiento por Burbuja| `O(n^2)`      | `Ω(n)`         | `Θ(n^2)`           |
+
+## Conclusión
+
+La notación asintótica es una herramienta poderosa para describir y comparar la eficiencia de los algoritmos. Nos permite enfocarnos en el comportamiento a largo plazo de un algoritmo y nos proporciona una manera de hablar sobre el rendimiento de manera abstracta y general. En las próximas clases, aplicaremos estos conceptos para analizar y mejorar algoritmos específicos.
+
+---
+
+**Autor:** Eric Alejandro Mercado  
+**Fecha:** 23 de Junio, 2024

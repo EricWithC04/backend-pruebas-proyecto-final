@@ -1,0 +1,166 @@
+# Modelos Básicos de Aprendizaje Automático
+
+## Introducción
+
+El aprendizaje automático abarca una amplia variedad de modelos que pueden ser utilizados para resolver diversos problemas. En esta clase, exploraremos algunos de los modelos más básicos y fundamentales del aprendizaje automático. Estos modelos sirven como base para comprender técnicas más avanzadas y complejas.
+
+## Modelos de Aprendizaje Supervisado
+
+### 1. Regresión Lineal
+
+La regresión lineal es uno de los modelos más simples y ampliamente utilizados en el aprendizaje automático. Se utiliza para predecir un valor continuo basado en una o más variables independientes.
+
+- **Aplicación:** Predicción de precios de casas, ventas, etc.
+- **Fórmula:** `y = β0 + β1x1 + β2x2 + ... + βnxn + ε`
+- **Ejemplo de Código:** 
+
+```python
+from sklearn.linear_model import LinearRegression
+
+# Ejemplo de datos
+X = [[1], [2], [3], [4], [5]]
+y = [1, 3, 3, 2, 5]
+
+# Crear el modelo
+modelo = LinearRegression()
+modelo.fit(X, y)
+
+# Predicción
+prediccion = modelo.predict([[6]])
+print(prediccion)
+
+```
+
+### 2. Regresión Logística
+
+La regresión logística se utiliza para problemas de clasificación binaria. Predice la probabilidad de que una instancia pertenezca a una de las dos clases.
+
+- **Aplicación:** Clasificación de correos electrónicos como spam o no spam, diagnóstico de enfermedades.
+- **Fórmula:** `P(y=1|x) = 1 / (1 + e^-(β0 + β1x1 + β2x2 + ... + βnxn))`
+- **Ejemplo de Código:** 
+
+```python
+from sklearn.linear_model import LogisticRegression
+
+# Ejemplo de datos
+X = [[1], [2], [3], [4], [5]]
+y = [0, 0, 1, 1, 1]
+
+# Crear el modelo
+modelo = LogisticRegression()
+modelo.fit(X, y)
+
+# Predicción
+prediccion = modelo.predict([[3.5]])
+print(prediccion)
+
+```
+
+### 3. Máquinas de Soporte Vectorial (SVM)
+
+Las SVM se utilizan tanto para clasificación como para regresión. Buscan un hiperplano que maximice el margen entre las diferentes clases.
+
+- **Aplicación:** Clasificación de imágenes, reconocimiento de voz.
+- **Fórmula:** `w • x - b = 0`
+- **Ejemplo de Código:** 
+
+```python
+from sklearn import svm
+
+# Ejemplo de datos
+X = [[1, 2], [2, 3], [3, 3], [2, 5], [3, 6]]
+y = [0, 0, 1, 1, 1]
+
+# Crear el modelo
+modelo = svm.SVC()
+modelo.fit(X, y)
+
+# Predicción
+prediccion = modelo.predict([[3, 4]])
+print(prediccion)
+
+```
+
+### 4. Árboles de Decisión
+
+Los árboles de decisión se utilizan para problemas de clasificación y regresión. Dividen los datos en subconjuntos basados en la característica que proporciona la máxima información.
+
+- **Aplicación:** Diagnóstico médico, análisis de crédito.
+- **Fórmula:** Basado en la métrica de entropía o índice Gini.
+- **Ejemplo de Código:** 
+
+```python
+from sklearn.tree import DecisionTreeClassifier
+
+# Ejemplo de datos
+X = [[0, 0], [1, 1], [0, 1], [1, 0]]
+y = [0, 1, 1, 0]
+
+# Crear el modelo
+modelo = DecisionTreeClassifier()
+modelo.fit(X, y)
+
+# Predicción
+prediccion = modelo.predict([[1, 1]])
+print(prediccion)
+
+```
+
+## Modelos de Aprendizaje No Supervisado
+
+### 1. K-Means
+
+K-Means es un algoritmo de agrupamiento que particiona los datos en k clusters, minimizando la variación dentro de cada cluster.
+
+- **Aplicación:** Segmentación de clientes, compresión de imágenes.
+- **Fórmula:** Minimizar la suma de distancias cuadradas entre puntos y el centroide del cluster.
+- **Ejemplo de Código:** 
+
+```python
+from sklearn.cluster import KMeans
+
+# Ejemplo de datos
+X = [[1, 2], [1, 4], [1, 0], [4, 2], [4, 4], [4, 0]]
+
+# Crear el modelo
+modelo = KMeans(n_clusters=2)
+modelo.fit(X)
+
+# Predicción
+predicciones = modelo.predict([[0, 0], [4, 4]])
+print(predicciones)
+
+```
+
+### 2. Análisis de Componentes Principales (PCA)
+
+PCA es una técnica de reducción de dimensionalidad que transforma los datos a un nuevo sistema de coordenadas donde los componentes principales tienen la máxima varianza.
+
+- **Aplicación:** Compresión de datos, visualización de datos en alta dimensión.
+- **Fórmula:** Encontrar los vectores propios de la matriz de covarianza.
+- **Ejemplo de Código:** 
+
+```python
+from sklearn.decomposition import PCA
+
+# Ejemplo de datos
+X = [[2.5, 2.4], [0.5, 0.7], [2.2, 2.9], [1.9, 2.2], [3.1, 3.0], [2.3, 2.7], [2, 1.6], [1, 1.1], [1.5, 1.6], [1.1, 0.9]]
+
+# Crear el modelo
+modelo = PCA(n_components=1)
+modelo.fit(X)
+
+# Transformar los datos
+X_reducido = modelo.transform(X)
+print(X_reducido)
+
+```
+
+## Conclusión
+
+Los modelos básicos de aprendizaje automático proporcionan una base sólida para abordar una variedad de problemas. Comprender estos modelos es crucial antes de avanzar hacia técnicas más complejas y especializadas. En las próximas clases, exploraremos más en profundidad cada uno de estos modelos y sus aplicaciones en escenarios del mundo real.
+
+---
+
+**Autor:** Eric Alejandro Mercado  
+**Fecha:** 24 de Junio, 2024

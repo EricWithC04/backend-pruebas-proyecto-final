@@ -1,0 +1,88 @@
+# ¿Qué es ciencia de datos?
+
+## Introducción
+
+La ciencia de datos es un campo interdisciplinario que utiliza métodos, procesos, algoritmos y sistemas científicos para extraer conocimiento y conclusiones de datos estructurados y no estructurados. La ciencia de datos combina técnicas de varias disciplinas como matemáticas, estadística, informática y conocimiento de negocio para analizar y entender fenómenos reales mediante el uso de datos.
+
+### ¿Por qué es importante la ciencia de datos?
+
+En el mundo actual, generamos una cantidad enorme de datos cada día. Desde las redes sociales, transacciones comerciales, sensores de dispositivos IoT, hasta registros médicos y sistemas educativos. La ciencia de datos permite transformar estos datos en información valiosa para tomar decisiones informadas, predecir tendencias futuras, y automatizar procesos.
+
+### Un Ejemplo Simple
+
+Imagina que trabajas en una tienda en línea y quieres aumentar las ventas. Tienes acceso a una gran cantidad de datos, como las compras anteriores de los clientes, las visitas a tu página web, los comentarios en redes sociales, etc. Como científico de datos, podrías hacer lo siguiente:
+
+1. **Recolección de Datos**: Recopilar datos de diversas fuentes como registros de ventas, comportamiento de navegación en el sitio web, y encuestas de satisfacción de clientes.
+
+2. **Limpieza de Datos**: Asegurarte de que los datos sean precisos y estén completos. Por ejemplo, manejando valores faltantes o eliminando datos duplicados.
+
+3. **Análisis de Datos**: Usar técnicas estadísticas para encontrar patrones en los datos. Por ejemplo, podrías descubrir que los clientes que compran productos electrónicos tienden a comprar accesorios una semana después.
+
+4. **Modelado Predictivo**: Aplicar algoritmos de aprendizaje automático para predecir comportamientos futuros. Por ejemplo, podrías crear un modelo que prediga qué productos es más probable que compren ciertos clientes.
+
+5. **Visualización de Datos**: Crear gráficos y dashboards que muestren tus hallazgos de manera clara y comprensible para los tomadores de decisiones.
+
+6. **Toma de Decisiones**: Usar la información derivada de los datos para implementar estrategias de marketing dirigidas, mejorar la experiencia del cliente, y optimizar el inventario.
+
+![Ciclo de vida de la ciencia de datos](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjE16nMypy9-2RwU2CAO-1gksYwijsd4-Q4g&s)
+
+## Conceptos Clave
+
+### Datos
+
+Los datos son hechos y estadísticas recopilados juntos para referencia o análisis. Pueden estar en diversas formas, tales como:
+
+- **Estructurados**: Datos organizados en formatos tabulares como bases de datos relacionales.
+- **No estructurados**: Datos no organizados en un formato predefinido, como textos, imágenes, videos, etc.
+
+### Información
+
+La información es el procesamiento, interpretación y organización de datos de manera que tengan significado o sean útiles para tomar decisiones.
+
+### Conocimiento
+
+El conocimiento es la aplicación de información y datos para tomar decisiones y resolver problemas. Se construye a partir de la información mediante la experiencia, contexto, interpretación y reflexión.
+
+## Fundamentos de la Ciencia de Datos
+
+### Estadísticas
+
+Las estadísticas son fundamentales en la ciencia de datos para la recolección, análisis, interpretación y presentación de datos. Permiten a los científicos de datos entender mejor los datos y derivar conclusiones válidas.
+
+### Aprendizaje Automático (Machine Learning)
+
+El aprendizaje automático es una rama de la inteligencia artificial que permite a las máquinas aprender de los datos sin ser explícitamente programadas. Utiliza algoritmos que iteran sobre los datos para encontrar patrones y mejorar las predicciones con el tiempo.
+
+### Análisis de Datos
+
+El análisis de datos implica inspeccionar, limpiar y modelar datos con el objetivo de descubrir información útil, concluir y apoyar la toma de decisiones.
+
+### Big Data
+
+El big data se refiere a conjuntos de datos que son tan grandes o complejos que las aplicaciones tradicionales de procesamiento de datos no son adecuadas. Los retos incluyen la captura de datos, almacenamiento, análisis, búsqueda, compartir, transferencia, visualización y privacidad de la información.
+
+## Herramientas Comunes en Ciencia de Datos
+
+- **Python**: Un lenguaje de programación muy popular en la ciencia de datos debido a su simplicidad y la gran cantidad de bibliotecas disponibles (pandas, NumPy, scikit-learn, etc.).
+- **SQL**: Lenguaje de consulta estructurado utilizado para gestionar y manipular bases de datos relacionales.
+- **Hadoop**: Un marco de software que soporta el procesamiento distribuido de grandes conjuntos de datos.
+
+## Importancia de la Ciencia de Datos
+
+La ciencia de datos es crucial en el mundo actual porque permite a las organizaciones:
+
+- **Tomar decisiones informadas**: Basadas en datos y análisis rigurosos.
+- **Identificar tendencias y patrones**: Que pueden ser utilizados para ganar ventajas competitivas.
+- **Automatizar procesos**: Mejorando la eficiencia y reduciendo costos.
+- **Mejorar productos y servicios**: A través de la personalización y la predicción de necesidades.
+
+![Ejemplo de visualización de datos](https://evotic.es/wp-content/uploads/2022/10/dashboard_ventas.png)
+
+## Conclusión
+
+La ciencia de datos es una disciplina poderosa que combina múltiples campos del conocimiento para extraer información valiosa de los datos. En esta asignatura, exploraremos los fundamentos de la ciencia de datos y aprenderemos a utilizar Python para analizar y visualizar datos de manera efectiva.
+
+---
+
+**Autor:** Eric Alejandro Mercado  
+**Fecha:** 22 de Junio, 2024

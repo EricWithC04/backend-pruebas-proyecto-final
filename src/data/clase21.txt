@@ -1,0 +1,76 @@
+# Preprocesamiento de Datos para Aprendizaje Automático
+
+## Introducción
+
+El preprocesamiento de datos es una etapa crucial en cualquier proyecto de aprendizaje automático. Los datos en su forma cruda a menudo contienen ruido, valores faltantes y formatos inconsistentes que pueden afectar negativamente el rendimiento de los modelos. En esta clase, exploraremos las técnicas fundamentales para preparar los datos antes de entrenar un modelo de aprendizaje automático.
+
+## ¿Qué es el Preprocesamiento de Datos?
+
+El preprocesamiento de datos implica transformar los datos brutos en un formato limpio y adecuado para el análisis. Este proceso incluye la limpieza, normalización, transformación y reducción de datos, entre otras técnicas.
+
+## Pasos en el Preprocesamiento de Datos
+
+### 1. Recolección de Datos
+
+El primer paso es reunir los datos necesarios para el análisis. Los datos pueden provenir de diversas fuentes, como bases de datos, archivos CSV, APIs, etc.
+
+### 2. Limpieza de Datos
+
+La limpieza de datos implica identificar y corregir errores en los datos. Esto puede incluir:
+
+- **Eliminación de valores faltantes:** Existen varias estrategias para manejar valores faltantes, como eliminarlos o imputarlos.
+- **Eliminación de duplicados:** Asegurarse de que no haya registros duplicados en los datos.
+- **Corrección de errores:** Identificar y corregir errores tipográficos o de formato.
+
+### 3. Normalización y Escalado
+
+La normalización y el escalado son técnicas para transformar las características numéricas en un rango común, lo cual es importante para algoritmos que son sensibles a la escala de los datos.
+
+- **Normalización:** Transformar las características para que tengan una media de 0 y una desviación estándar de 1.
+- **Escalado:** Transformar las características para que estén en un rango específico, como [0, 1].
+
+### 4. Codificación de Variables Categóricas
+
+Las variables categóricas deben ser transformadas en un formato numérico que los algoritmos de aprendizaje automático puedan entender.
+
+- **Codificación One-Hot:** Crear variables binarias (0 o 1) para cada categoría.
+- **Codificación de Etiquetas:** Asignar un número único a cada categoría.
+
+### 5. División del Conjunto de Datos
+
+Dividir el conjunto de datos en conjuntos de entrenamiento y prueba es esencial para evaluar el rendimiento del modelo.
+
+- **Conjunto de Entrenamiento:** Utilizado para entrenar el modelo.
+- **Conjunto de Prueba:** Utilizado para evaluar el rendimiento del modelo.
+
+## Ejemplo Práctico: Conjunto de Datos Iris
+
+### Paso 1: Recolección de Datos
+
+Utilizamos el conjunto de datos Iris, que contiene información sobre el largo y ancho de los sépalos y pétalos de flores de iris.
+
+### Paso 2: Limpieza de Datos
+
+- **Eliminación de valores faltantes:** Verificamos si hay valores faltantes y los imputamos si es necesario.
+- **Eliminación de duplicados:** Verificamos si hay registros duplicados y los eliminamos.
+
+### Paso 3: Normalización y Escalado
+
+Aplicamos normalización a las características numéricas del conjunto de datos.
+
+### Paso 4: Codificación de Variables Categóricas
+
+La variable objetivo, que es la especie de la flor, se codifica utilizando codificación de etiquetas.
+
+### Paso 5: División del Conjunto de Datos
+
+Dividimos el conjunto de datos en un 80% para entrenamiento y un 20% para prueba.
+
+## Conclusión
+
+El preprocesamiento de datos es un paso esencial para garantizar que los datos sean adecuados para el análisis y que los modelos de aprendizaje automático puedan aprender de manera efectiva. A través de la limpieza, normalización y transformación de datos, podemos mejorar significativamente el rendimiento de nuestros modelos. En las próximas clases, exploraremos cómo aplicar estas técnicas a conjuntos de datos más complejos y específicos.
+
+---
+
+**Autor:** Eric Alejandro Mercado  
+**Fecha:** 24 de Junio, 2024

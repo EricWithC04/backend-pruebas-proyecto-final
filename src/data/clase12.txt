@@ -1,0 +1,145 @@
+# Introducción a la libreria Pandas para Ciencias de Datos
+
+## ¿Qué es Pandas?
+
+Pandas es una biblioteca de Python especializada en el análisis de datos y la manipulación de
+estructuras de datos tabulares. Fue creada originalmente por Wes McKinney en 2008 y desde
+entonces se ha convertido en una de las herramientas más populares y poderosas para el
+análisis de datos en Python. Una de sus principales características es el uso de los **DataFrames y Series**.  
+
+Un DataFrame es una estructura bidimensional similar a una tabla.  
+Una Serie es una estructura unidimensional similar a un array.  
+
+## Instalación de Pandas
+
+Pandas es una biblioteca de Python, así que puedes instalarla usando pip, el gestor de
+paquetes de Python:
+
+```bash
+pip install pandas
+```
+
+## Importar Pandas
+
+Una vez que tienes Pandas instalado, puedes importarlo en tu script de Python:
+
+```python
+import pandas as pd
+```
+
+## Creación de un DataFrame
+
+El DataFrame es una estructura de datos fundamental en Pandas. Puedes crear uno a partir de
+listas, diccionarios, arreglos de numpy, etc.  
+
+Crear un DataFrame a partir de una lista de listas:
+
+```python
+data = [
+['Alice', 25],
+['Bob', 30],
+['Charlie', 35]
+]
+df = pd.DataFrame(data, columns=['Nombre', 'Edad'])
+```
+
+Crear un DataFrame a partir de un diccionario:
+
+```python
+data = {
+'Nombre': ['Alice', 'Bob', 'Charlie'],
+'Edad': [25, 30, 35]
+}
+df = pd.DataFrame(data)
+```
+
+## Leer y escribir datos
+
+Pandas puede leer y escribir datos desde y hacia diferentes formatos como CSV, Excel, bases
+de datos SQL, etc.
+
+```python
+# Leer un archivo CSV
+df = pd.read_csv('datos.csv')
+# Escribir a un archivo CSV
+df.to_csv('nuevo_datos.csv', index=False)
+# Leer un archivo Excel
+df = pd.read_excel('datos.xlsx')
+# Escribir a un archivo Excel
+df.to_excel('nuevo_datos.xlsx', index=False)
+```
+
+## Explorar un DataFrame
+
+Pandas ofrece varias funciones para explorar y entender tus datos.
+
+```python
+# Mostrar las primeras filas del DataFrame
+print(df.head())
+# Obtener información sobre el DataFrame
+print(df.info())
+# Resumen estadístico del DataFrame
+print(df.describe())
+# Seleccionar una columna
+print(df['Nombre'])
+# Seleccionar varias columnas
+print(df[['Nombre', 'Edad']])
+```
+
+## Manipulación de datos:
+
+Pandas proporciona numerosas funciones para manipular y transformar datos.
+
+```python
+# Filtrar filas basadas en una condición
+personas_jovenes = df[df['Edad'] < 30]
+# Agregar una nueva columna
+df['Género'] = ['F', 'M', 'M']
+# Eliminar una columna
+df.drop('Género', axis=1, inplace=True)
+# Renombrar una columna
+df.rename(columns={'Nombre': 'Nombre completo'}, inplace=True)
+```
+
+## Operaciones con datos faltantes
+
+Pandas facilita el manejo de valores faltantes en los datos.
+
+```python
+# Eliminar filas con valores faltantes
+df.dropna(inplace=True)
+# Llenar valores faltantes con un valor específico
+df.fillna(0, inplace=True)
+# Llenar valores faltantes con la media de la columna
+df.fillna(df.mean(), inplace=True)
+```
+
+## Agrupar y resumir datos
+
+Pandas permite agrupar datos y realizar operaciones de resumen.
+
+```python
+# Agrupar por una columna y calcular la media de otra columna
+datos_agrupados = df.groupby('Categoría')['Valor'].mean()
+# Agregar una columna con el recuento de filas por grupo
+df['Conteo'] = df.groupby('Categoría')['Categoría'].transform('count')
+```
+
+## Funciones estadísticas comunes
+
+Pandas ofrece numerosas funciones para realizar cálculos estadísticos en los datos.
+
+```python
+# Calcular la media de una columna
+print(df['Edad'].mean())
+# Calcular la mediana de una columna
+print(df['Edad'].median())
+# Calcular la desviación estándar de una columna
+print(df['Edad'].std())
+# Calcular el máximo de una columna
+print(df['Edad'].max())
+# Calcular el mínimo de una columna
+print(df['Edad'].min())
+# Calcular la correlación entre dos columnas
+print(df['Columna1'].corr(df['Columna2']))
+```

@@ -1,0 +1,275 @@
+# Introducción a Matplotlib para gráficos estadísticos
+
+Matplotlib es el “abuelo” de las librerías de visualización de datos con Python. Fue creado
+por John Hunter. Lo creó para tratar de replicar las capacidades de graficar de MatLab en
+Python.  
+
+Es una excelente biblioteca de gráficos 2D y 3D para generar figuras científicas.  
+
+Algunos de los principales Pros de Matplotlib son:
+
+- Generalmente es fácil comenzar por graficas simples
+- Soporte para etiquetas personalizadas y textos
+- Gran control de cada elemento en una figura
+- Salida de alta calidad en muchos formatos
+- Muy personalizable en general
+
+Matplotlib nos permite crear figuras reproducibles mediante programación. la página web
+oficial de Matplotlib: [http://matplotlib.org/](http://matplotlib.org/)  
+
+### Instalación
+
+Se puede instalar con el siguiente comando:
+
+```bash
+pip install matplotlib
+```
+
+### Importar la librería
+
+Importar el módulo matplotlib.pyplot con el nombre de plt (esto es un estándar en la
+comunidad):
+
+```python
+import matplotlib.pyplot as plt
+```
+
+### Comandos Básicos de Matplotlib
+Veamos un ejemplo muy simple usando dos arreglos numpy. También se pueden usar listas, pero lo más probable es usar arreglos Numpy o columnas de pandas (que esencialmente también se comportan como arreglos). Los datos que queremos graficar:
+
+```python
+import numpy as np
+x = np.linspace(0,5, 11)
+y = x ** 2
+```
+
+```python
+# Metodo basico para graficar X vs Y
+plt.plot(x, y) # se grafica una linea de color azul
+plt.show() # Mostrar la gráfica luego de que ya se definió todos los elementos
+```
+![matplotlib_1](https://res.cloudinary.com/du2qoqncg/image/upload/v1719163587/matplotlib_1_ctasu5.jpg)
+
+### Título
+
+```python
+plt.plot(x, y) # se grafica una linea de color azul
+plt.title('Titulo de la grafica'); # definir el titulo de la grafica
+```
+![matplotlib_2](https://res.cloudinary.com/du2qoqncg/image/upload/v1719163587/matplotlib_2_boltsr.jpg)
+
+O también se puede utilizar las columnas de una DataFrame de Pandas:
+
+```python
+import matplotlib.pyplot as plt
+import pandas as pd
+df = pd.DataFrame({ "x": [1,2,3,4,5], "y": [6,7,8,9,0]})
+plt.plot(df["x"], df["y"])
+plt.title("Título con pandas")
+plt.show()
+```
+![matplotlib_3](https://res.cloudinary.com/du2qoqncg/image/upload/v1719163586/matplotlib_3_mf7mqw.jpg)
+
+### Nombres de los ejes
+
+```python
+plt.plot(x, y) # se grafica una linea de color azul
+plt.xlabel('Nombre del eje X') # definir el nombre del eje X
+plt.ylabel('Nombre del eje Y') # definir el nombre del eje Y
+plt.title('Titulo de la grafica'); # definir el titulo de la grafica
+```
+![matplotlib_4](https://res.cloudinary.com/du2qoqncg/image/upload/v1719163586/matplotlib_4_cmjvkv.jpg)
+
+### Legend
+Puede usar el argumento de palabra clave label = “texto de etiqueta” cuando se agreguen
+gráficas u otros objetos a la figura, y luego usar el método legend sin argumentos para
+agregar la leyenda a la figura:
+
+```python
+plt.plot(x, y, label="x vs y") # se grafica una linea de color azul
+# se pone en el atributo 'label' el texto deseado
+plt.xlabel('Nombre del eje X') # definir el nombre del eje X
+plt.ylabel('Nombre del eje Y') # definir el nombre del eje Y
+plt.title('Titulo de la grafica') # definir el titulo de la grafica
+plt.legend(); # agregar el legend al plot
+```
+![matplotlib_5](https://res.cloudinary.com/du2qoqncg/image/upload/v1719163587/matplotlib_5_fbcjzy.jpg)
+
+### ¡La leyenda se superpone con parte de la gráfica!
+
+El método legend toma un argumento opcional de palabra clave loc que puede usarse para
+especificar en qué parte de la figura debe dibujarse la leyenda. Los valores permitidos de
+loc son códigos numéricos para los diversos lugares donde se puede dibujar la leyenda. 
+
+### Cuadrícula (Grid)
+
+```python
+plt.plot(x, y, label="x vs y") # se grafica una linea de color azul
+# se pone en el atributo 'label' el textto deseado
+plt.xlabel('Nombre del eje X') # definir el nombre del eje X
+plt.ylabel('Nombre del eje Y') # definir el nombre del eje Y
+plt.title('Titulo de la grafica') # definir el titulo de la grafica
+plt.legend() # agregar el legend al plot
+plt.grid(True) # poner grid en la grafica
+```
+![matplotlib_6](https://res.cloudinary.com/du2qoqncg/image/upload/v1719163587/matplotlib_6_j653ok.jpg)
+
+### Parámetros de las líneas: colores, ancho y tipos
+
+Matplotlib le brinda muchas opciones para personalizar colores, anchos de línea y tipos de
+línea.  
+
+Existe la sintaxis básica que se puede consultar en:  
+[https://matplotlib.org/2.1.1/api/_as_gen/matplotlib.pyplot.plot.html](https://matplotlib.org/2.1.1/api/_as_gen/matplotlib.pyplot.plot.html)
+
+### Colores Básicos
+
+Con matplotlib, podemos definir los colores de las líneas y otros elementos gráficos de
+varias maneras. En primer lugar, podemos usar la sintaxis similar a MATLAB donde 'b' significa azul,'g' significa verde, etc. También se admite la API MATLAB para seleccionar
+estilos de línea: donde, por ejemplo, ‘b.-‘significa una línea azul con puntos:
+
+```python
+# Estilo MATLAB de estilo y color de linea
+plt.plot(x, x**2, 'b.-') # linea azul con puntos
+plt.plot(x, x**3, 'g--'); # Linea verde discontinua
+```
+![matplotlib_7](https://res.cloudinary.com/du2qoqncg/image/upload/v1719163587/matplotlib_7_frfpcp.jpg)
+
+### Colores usando el parámetro color
+
+También podemos definir colores por sus nombres o códigos hexadecimales RGB y, opcionalmente, proporcionar un valor alpha utilizando los argumentos de las palabras clave color y alpha. Alpha indica opacidad. 
+
+```python
+plt.plot(x, x, color="red") # Medio transparente
+plt.plot(x, x+1, color="red", alpha=0.5) # Medio transparente
+plt.plot(x, x+2, color="#8B008B") # RGB hex code
+plt.plot(x, x+3, color="#F08C08") # RGB hex code
+plt.grid(True) # poner grid en la grafica
+```
+![matplotlib_8](https://res.cloudinary.com/du2qoqncg/image/upload/v1719163587/matplotlib_8_bupm03.jpg)
+
+### Estilos de líneas y marcadores
+
+Para cambiar el ancho de línea, podemos usar el argumento de la palabra clave linewidth o
+lw. El estilo de línea se puede seleccionar usando los argumentos de palabras clave linestyle o ls:
+
+```python
+plt.subplots(figsize=(12,6))
+plt.plot(x, x+1, color="red", linewidth=0.25)
+plt.plot(x, x+2, color="red", linewidth=0.50)
+plt.plot(x, x+3, color="red", linewidth=1.00)
+plt.plot(x, x+4, color="red", linewidth=2.00)
+# posibles opciones linestype '-', '-', '-.', ':', 'steps'
+plt.plot(x, x+5, color="green", lw=3, linestyle='-')
+plt.plot(x, x+6, color="green", lw=3, ls='-.')
+plt.plot(x, x+7, color="green", lw=3, ls=':')
+# lineas parametrizadas
+line, = plt.plot(x, x+8, color="black", lw=1.50)
+line.set_dashes([5, 10, 15, 10]) # formato: longitud de linea, longitud de espacio, ...
+# posibles simbolos del marcas: marker = '+', 'o', '*', 's', ',', '.',bb
+'1', '2', '3', '4', ...
+plt.plot(x, x+ 9, color="blue", lw=3, ls='-', marker='+')
+plt.plot(x, x+10, color="blue", lw=3, ls='--', marker='o')
+plt.plot(x, x+11, color="blue", lw=3, ls='-', marker='s')
+plt.plot(x, x+12, color="blue", lw=3, ls='--', marker='1')
+# tamaño y color de la marca
+plt.plot(x, x+13, color="purple", lw=1, ls='-', marker='o',
+markersize=2)
+plt.plot(x, x+14, color="purple", lw=1, ls='-', marker='o',
+markersize=4)
+plt.plot(x, x+15, color="purple", lw=1, ls='-', marker='o',
+markersize=8, markerfacecolor="red")
+plt.plot(x, x+16, color="purple", lw=1, ls='-', marker='s',
+markersize=8,
+markerfacecolor="yellow", markeredgewidth=3,
+markeredgecolor="green")
+```
+![matplotlib_9](https://res.cloudinary.com/du2qoqncg/image/upload/v1719163586/matplotlib_9_xijkky.jpg)
+
+### Anotaciones de texto
+
+Anotar texto en figuras matplotlib se puede hacer usando la función text. Es compatible con
+el formato LaTeX al igual que los textos y títulos de la etiqueta del eje:
+
+```python
+# Datos para graficar
+xx = np.linspace(-0.75, 1., 100)
+plt.plot(xx, xx**2, xx, xx**3)
+plt.title("Plot con anotaciones")
+# Anotacion 1
+plt.text(0.15, 0.2, r"$y=x^2$", fontsize=20, color="blue")
+#Anotacion 2
+plt.text(0.65, 0.1, r"$y=x^3$", fontsize=20, color="green")
+```
+![matplotlib_10](https://res.cloudinary.com/du2qoqncg/image/upload/v1719163586/matplotlib_10_q9iq9a.jpg)
+
+### Tipos Especiales de Plots
+
+**Scatter Plot (Dispersion)**  
+
+```python
+# Grafica X vs Y
+# crear datos aleatorios
+N = 50
+x = np.random.rand(N)
+y = np.random.rand(N)
+plt.scatter(x, y)
+plt.title("Scatter plot Simple")
+plt.show() # En jupyter notebook no es necesario este comando
+```
+![matplotlib_11](https://res.cloudinary.com/du2qoqncg/image/upload/v1719163586/matplotlib_11_kn2jkb.jpg)  
+
+Con las gráficas de scatter o dispersión se pueden representar más de 2 variables en una
+misma gráfica, en el siguiente ejemplo se realizará la comparación de x vs y el color de los
+puntos se representará con otra variable y el tamaño de los puntos será otra variable
+
+```python
+# se creara otra variable que se representara con colores
+colors = np.random.rand(N) # usar colores aleatorios
+# se creara otra variable que se representara con el area de los puntos
+area = np.pi * (15 * np.random.rand(N))**2 # 0 to 15 point radio
+plt.scatter(x, y, s=area, c=colors, alpha=0.5) # el atributo alpha es para la transparencia
+plt.title("Scatter plot de representacion de 4 variables")
+```
+![matplotlib_2](https://res.cloudinary.com/du2qoqncg/image/upload/v1719163586/matplotlib_12_lou6in.jpg)
+
+### Histograma
+
+Un histograma es una representación gráfica de una variable en forma de barras, donde la
+superficie de cada barra es proporcional a la frecuencia de los valores representados. Sirven para obtener una “primera vista” general, o panorama, de la distribución de la
+población, o de la muestra, respecto a una característica, cuantitativa y continua. 
+
+```python
+# crear datos aleatorios
+from random import sample
+data = sample(range(1, 1000), 100)
+plt.hist(data,bins = 10) # bins el numero de divisiones del histograma
+plt.title("Histograma")
+```
+![matplotlib_13](https://res.cloudinary.com/du2qoqncg/image/upload/v1719163587/matplotlib_13_eqecb4.jpg)
+
+### Diagramas de torta
+
+```python
+labels = 'Caballos', 'Cerdos', 'Perros', 'Vacas'
+sizes = [15, 30, 45, 10]
+explode = (0, 0.1, 0, 0) # solo "Saque" el 2do pedazo (ejem. 'cerdos')
+plt.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
+shadow=True, startangle=90)
+plt.axis('equal') #La relación de aspecto igual garantiza que el círculo sea homogeneo
+plt.show()
+```
+![matplotlib_14](https://res.cloudinary.com/du2qoqncg/image/upload/v1719163586/matplotlib_14_mslyvh.jpg)
+
+### Guardando las figuras
+Matplotlib puede generar resultados de alta calidad en varios formatos, incluidos PNG, JPG, EPS, SVG, PGF y PDF. Para guardar una figura en un archivo, podemos usar el método
+savefig de la clase Figure:  
+
+Lo primero es antes de crear una gráfica definir la clase Figure al principio de todo la gráfica, Ejemplo:  
+
+```python
+fig = plt.figure(figsize=(10,4)) plt.scatter(x, y) plt.title("Scatter plot Simple")
+```
+```python
+fig.savefig("figura.png")
+```

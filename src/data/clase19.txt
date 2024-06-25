@@ -1,0 +1,123 @@
+# Iteración de Soluciones Aplicando Pensamiento Algorítmico Optimizado
+
+## Introducción
+
+La optimización algorítmica es un proceso crucial en el desarrollo de software eficiente. Consiste en mejorar los algoritmos existentes para que sean más rápidos y consuman menos recursos. En esta clase, exploraremos cómo aplicar el pensamiento algorítmico optimizado para iterar sobre soluciones y mejorar su rendimiento.
+
+## ¿Qué es el Pensamiento Algorítmico Optimizado?
+
+El pensamiento algorítmico optimizado se refiere a la capacidad de analizar un problema, diseñar una solución inicial y luego iterar sobre esa solución para mejorar su eficiencia. Este proceso implica:
+
+1. **Identificación del problema:** Comprender claramente el problema que se debe resolver.
+2. **Diseño de una solución inicial:** Crear un algoritmo básico que resuelva el problema.
+3. **Análisis de la eficiencia:** Evaluar la eficiencia del algoritmo utilizando técnicas de análisis algorítmico.
+4. **Optimización:** Modificar y mejorar el algoritmo para hacerlo más eficiente.
+
+## Importancia de la Iteración en la Optimización
+
+La iteración es esencial en el proceso de optimización porque permite refinar y mejorar continuamente las soluciones. A través de múltiples iteraciones, es posible identificar cuellos de botella, eliminar redundancias y aplicar técnicas avanzadas para mejorar el rendimiento del algoritmo.
+
+## Técnicas de Optimización Algorítmica
+
+### 1. Mejorar la Complejidad Temporal
+
+La complejidad temporal se refiere a la cantidad de tiempo que un algoritmo necesita para completarse. Para mejorar la complejidad temporal, es posible:
+
+- **Cambiar el enfoque del algoritmo:** Por ejemplo, usar búsqueda binaria en lugar de búsqueda lineal.
+- **Utilizar estructuras de datos eficientes:** Como árboles de búsqueda balanceados en lugar de listas enlazadas.
+
+### 2. Reducir el Uso de Memoria
+
+El uso de memoria se refiere a la cantidad de memoria que un algoritmo necesita para ejecutarse. Para reducir el uso de memoria, es posible:
+
+- **Eliminar variables innecesarias:** Evitar el uso de variables temporales que no son esenciales.
+- **Utilizar estructuras de datos compactas:** Como arreglos en lugar de listas enlazadas.
+
+### 3. Aprovechar la Paralelización
+
+La paralelización implica dividir un problema en subproblemas más pequeños que pueden resolverse simultáneamente. Esto puede lograrse mediante:
+
+- **Hilos y procesos:** Utilizar la programación multihilo o multiproceso.
+- **Algoritmos paralelos:** Diseñar algoritmos que puedan ejecutarse en paralelo, como el algoritmo de reducción en paralelo.
+
+## Ejemplos Prácticos
+
+### Ejemplo 1: Búsqueda Lineal a Búsqueda Binaria
+
+#### Código Inicial: Búsqueda Lineal
+
+```python
+def busqueda_lineal(lista, objetivo):
+    for i in range(len(lista)):
+        if lista[i] == objetivo:
+            return i
+    return -1
+```
+
+#### Código Optimizado: Búsqueda Binaria
+
+```python
+def busqueda_binaria(lista, objetivo):
+    bajo = 0
+    alto = len(lista) - 1
+    while bajo <= alto:
+        medio = (bajo + alto) // 2
+        if lista[medio] == objetivo:
+            return medio
+        elif lista[medio] < objetivo:
+            bajo = medio + 1
+        else:
+            alto = medio - 1
+    return -1
+```
+
+### Ejemplo 2: Ordenamiento por Burbuja a Quicksort
+
+#### Código Inicial: Ordenamiento por Burbuja
+
+```python
+def ordenamiento_burbuja(lista):
+    n = len(lista)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if lista[j] > lista[j+1]:
+                lista[j], lista[j+1] = lista[j+1], lista[j]
+    return lista
+```
+
+#### Código Optimizado: Quicksort
+
+```python
+def quicksort(lista):
+    if len(lista) <= 1:
+        return lista
+    else:
+        pivote = lista[0]
+        menores = [x for x in lista[1:] if x <= pivote]
+        mayores = [x for x in lista[1:] if x > pivote]
+        return quicksort(menores) + [pivote] + quicksort(mayores)
+```
+
+## Proceso de Iteración y Optimización
+
+1. **Diseño Inicial:**
+    - Crear un algoritmo básico que resuelva el problema.
+2. **Análisis Inicial:**
+    - Evaluar la eficiencia del algoritmo utilizando notaciones asintóticas.
+3. **Identificación de Cuellos de Botella:**
+    - Identificar las partes del algoritmo que consumen más tiempo o memoria.
+4. **Aplicación de Técnicas de Optimización:**
+    - Mejorar la complejidad temporal y reducir el uso de memoria.
+5. **Evaluación Post-Optimización:**
+    - Comparar el rendimiento del algoritmo optimizado con el algoritmo inicial.
+6. **Iteración Continua:**
+    - Repetir el proceso hasta alcanzar un nivel de eficiencia aceptable.
+
+## Conclusión
+
+El pensamiento algorítmico optimizado es una habilidad esencial para cualquier desarrollador de software. A través de la iteración y la aplicación de técnicas de optimización, es posible transformar algoritmos básicos en soluciones altamente eficientes. En las próximas clases, exploraremos más técnicas avanzadas de optimización y su aplicación en problemas complejos.
+
+---
+
+**Autor:** Eric Alejandro Mercado  
+**Fecha:** 23 de Junio, 2024

@@ -1,0 +1,100 @@
+# Introducción al Análisis Algorítmico
+
+## Introducción
+
+El análisis algorítmico es una parte esencial de la ciencia de la computación, que se enfoca en determinar la eficiencia de los algoritmos. Esto incluye medir el tiempo de ejecución y el uso de memoria de un algoritmo, lo cual es crucial para entender su rendimiento y escalabilidad. En esta clase, exploraremos los conceptos básicos del análisis algorítmico, su importancia y algunas técnicas comunes.
+
+## ¿Qué es el Análisis Algorítmico?
+
+El análisis algorítmico se refiere al proceso de evaluar y comparar la eficiencia de diferentes algoritmos. La eficiencia de un algoritmo puede ser evaluada en términos de:
+
+- **Tiempo de ejecución:** Cuánto tiempo tarda un algoritmo en completarse.
+- **Uso de memoria:** Cuánta memoria consume un algoritmo durante su ejecución.
+
+### Importancia del Análisis Algorítmico
+
+1. **Rendimiento:** Permite identificar qué algoritmos son más rápidos y eficientes.
+2. **Escalabilidad:** Ayuda a prever cómo se comportará un algoritmo a medida que aumente el tamaño de la entrada.
+3. **Optimización:** Facilita la mejora y optimización de algoritmos para aplicaciones prácticas.
+
+## Medidas de Eficiencia
+
+### Tiempo de Ejecución
+
+El tiempo de ejecución se mide típicamente en términos de la cantidad de operaciones básicas que realiza un algoritmo. La notación Big-O se utiliza para describir la complejidad temporal de un algoritmo.
+
+- `O(1)` - Constante: El tiempo de ejecución no depende del tamaño de la entrada.
+- `O(n)` - Lineal: El tiempo de ejecución crece linealmente con el tamaño de la entrada.
+- `O(n^2)` - Cuadrática: El tiempo de ejecución crece cuadráticamente con el tamaño de la entrada.
+
+### Uso de Memoria
+
+El uso de memoria se refiere a la cantidad de espacio en memoria que un algoritmo necesita para ejecutarse. Esto incluye variables, estructuras de datos y cualquier otra información necesaria durante la ejecución del algoritmo.
+
+## Técnicas de Análisis Algorítmico
+
+### Análisis Asintótico
+
+El análisis asintótico se utiliza para describir el comportamiento de un algoritmo en términos de su crecimiento con respecto al tamaño de la entrada. Las notaciones comunes son:
+
+- **Big-O (`O`)**: Describe el límite superior del tiempo de ejecución en el peor caso.
+- **Omega (`Ω`)**: Describe el límite inferior del tiempo de ejecución en el mejor caso.
+- **Theta (`Θ`)**: Describe el límite exacto del tiempo de ejecución, tanto en el mejor como en el peor caso.
+
+### Análisis del Peor Caso, Mejor Caso y Caso Promedio
+
+- **Peor Caso:** Evalúa el rendimiento del algoritmo en la peor situación posible.
+- **Mejor Caso:** Evalúa el rendimiento del algoritmo en la mejor situación posible.
+- **Caso Promedio:** Evalúa el rendimiento del algoritmo en una situación promedio, considerando todas las entradas posibles.
+
+### Ejemplo de Análisis: Búsqueda Lineal
+
+#### Código
+
+```python
+def busqueda_lineal(lista, objetivo):
+    for i in range(len(lista)):
+        if lista[i] == objetivo:
+            return i
+    return -1
+```
+
+#### Análisis
+
+- **Peor Caso: `O(n)`** - El elemento no está en la lista, y el algoritmo recorre toda la lista.
+- **Mejor Caso: `O(1)`** - El elemento está en la primera posición de la lista.
+- **Caso Promedio: `O(n/2)`** - En promedio, el algoritmo recorre la mitad de la lista.
+
+### Ejemplo de Análisis: Búsqueda Binaria
+
+#### Código
+
+```python
+def busqueda_binaria(lista, objetivo):
+    bajo = 0
+    alto = len(lista) - 1
+    while bajo <= alto:
+        medio = (bajo + alto) // 2
+        if lista[medio] == objetivo:
+            return medio
+        elif lista[medio] < objetivo:
+            bajo = medio + 1
+        else:
+            alto = medio - 1
+    return -1
+```
+
+#### Análisis
+
+- **Peor Caso: `O(log n)`** - El algoritmo divide la lista en mitades, reduciendo significativamente el número de comparaciones.
+- **Mejor Caso: `O(1)`** - El elemento está en la posición central de la lista.
+- **Caso Promedio: `O(log n)`** - El comportamiento promedio es similar al peor caso debido a la naturaleza de la división de la lista.
+
+## Conclusión
+
+El análisis algorítmico es una herramienta poderosa para evaluar y mejorar la eficiencia de los algoritmos. Comprender las diferentes técnicas de análisis y ser capaz de aplicarlas a diversos algoritmos es crucial para desarrollar software eficiente y escalable. En las próximas clases, profundizaremos en técnicas avanzadas de análisis y optimización de algoritmos.
+
+---
+
+**Autor:** Eric Alejandro Mercado  
+**Fecha:** 23 de Junio, 2024

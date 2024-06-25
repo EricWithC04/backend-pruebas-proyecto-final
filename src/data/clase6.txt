@@ -1,0 +1,303 @@
+# Módulos, librerías de python y entornos virtuales
+
+## Módulos
+
+Un módulo o module en Python es un fichero .py que alberga un conjunto de funciones, variables o clases y que puede ser usado por otros módulos. Nos permiten reutilizar códigoy organizarlo mejor en namespaces. Por ejemplo, podemos definir un módulo mimodulo.pycon dos funciones suma() y resta(). 
+
+```python
+# mimodulo.py
+def suma(a, b):
+return a + b
+def resta(a, b):
+return a - b
+```
+
+Una vez definido, dicho módulo puede ser usado o importado en otro fichero, como
+mostramos a continuación. Usando import podemos importar todo el contenido. 
+
+```python
+# otromodulo.py
+import mimodulo
+print(mimodulo.suma(4, 3)) # 7
+print(mimodulo.resta(10, 9)) # 1
+```
+
+También podemos importar únicamente los componentes que nos interesen como
+mostramos a continuación. 
+
+```python
+from mimodulo import suma, resta
+print(suma(4, 3)) # 7
+print(resta(10, 9)) # 1
+```
+
+Por último, podemos importar todo el módulo haciendo uso de *, sin necesidad de usar
+**mimodulo.***. 
+
+```python
+from mimodulo import *
+print(suma(4, 3)) # 7
+print(resta(10, 9)) # 1
+```
+
+## Cambiando los Nombres con as
+Por otro lado, es posible cambiar el nombre del módulo usando as. Imaginemos quetenemos un módulo 
+
+```python
+moduloconnombrelargo.py. # moduloconnombrelargo.py
+hola = "hola" En vez de usar el siguiente import, tal vez queramos asignar un nombre más corto al
+módulo. import moduloconnombrelargo
+print(moduloconnombrelargo.hola)
+```
+
+Podemos hacerlo de la siguiente manera con as:
+
+```python
+import moduloconnombrelargo as m
+print(m.hola)
+```
+
+## Librerías
+
+Las bibliotecas (o librerías) de Python son colecciones de código predefinido que
+proporcionan funcionalidades específicas para realizar diversas tareas. Estas bibliotecasestán diseñadas para ser reutilizadas por otros programas y permiten a los desarrolladoresahorrar tiempo y esfuerzo al no tener que volver a escribir código desde cero para cadaproyecto. Estas son algunas características importantes sobre las bibliotecas de Python:
+
+- **Amplia gama de funcionalidades:** Python cuenta con una amplia gama de bibliotecaspara realizar diversas tareas, como manipulación de datos, desarrollo web, procesamientode imágenes, aprendizaje automático, entre otros. 
+- **Comunidad activa:** La comunidad de Python es muy activa y contribuye constantementecon nuevas bibliotecas y mejoras para las existentes. Esto significa que siempre hay nuevas herramientas y soluciones disponibles para resolver problemas comunes. 
+- **Fácil instalación y uso:** La mayoría de las bibliotecas de Python se pueden instalar
+fácilmente utilizando herramientas como pip.
+
+## Gestor de paquetes PIP
+**PIP (Python Package Index)** es el sistema de gestión de paquetes estándar para Python. Permite instalar, actualizar y eliminar paquetes de Python de forma sencilla.  
+Verificar la versión de pip haciendo pip --version y/o pip3 --version:
+
+```bash
+pip --version
+pip3 --version
+```
+
+**Nota:** en algunos sistemas donde están instalados Python 2 y Python 3, **pip y pip3** harán cosas diferentes. pip instala la versión Python 2 del paquete y pip3 instalará la versiónPython 3 del paquete. 
+
+## Para instalar un paquete:
+
+```bash
+pip install <module_name>
+```
+
+**Nota:** la diferencia con npm por ejemplo, es que npm install instala de forma predeterminadalos paquetes localmente en un proyecto, mientras que pip install de forma predeterminadalos instala globalmente. 
+
+## Para actualizar un paquete:
+
+```bash
+pip install <module_name> --upgrade
+```
+
+## Para eliminar un paquete:
+
+```bash
+pip uninstall <module_name>
+```
+
+## Listar paquetes instalados:
+
+```bash
+pip list
+```
+
+## Mostrar información sobre un paquete:
+
+```bash
+pip show <module_name>
+```
+
+## Buscar paquetes:
+
+```bash
+pip search término-de-búsqueda
+```
+
+## Otros gestores usados en python
+
+### Conda: 
+Conda es un gestor de paquetes y un sistema de gestión de entornos para Python, R y otros lenguajes. Se utiliza principalmente en el ámbito de la ciencia de datos y el
+análisis numérico. Con Conda, puedes instalar, actualizar y gestionar paquetes, así comocrear y gestionar entornos virtuales. 
+
+### Pipenv: 
+Pipenv es una herramienta de gestión de dependencias y entornos para Python. Combina las funcionalidades de pip (para la gestión de paquetes) y virtualenv (paralagestión de entornos virtuales) en una sola herramienta. Pipenv también gestiona
+automáticamente el archivo Pipfile, que especifica las dependencias de tu proyecto, y el
+archivo Pipfile.lock, que registra las versiones exactas de las dependencias instaladas. 
+
+### Poetry: 
+Poetry es otra herramienta de gestión de dependencias y paquetes para Python. Al
+igual que Pipenv, Poetry simplifica la gestión de dependencias y entornos virtuales al
+combinar las funcionalidades de pip y virtualenv. También proporciona características
+adicionales, como la gestión de scripts, la publicación de paquetes en PyPI y la
+compatibilidad con proyectos que usan múltiples paquetes. 
+
+### Anaconda: 
+Anaconda es una distribución de Python que incluye una amplia gama depaquetes y herramientas utilizados en el ámbito científico y de datos. Además de ser unadistribución, Anaconda también incluye un gestor de paquetes llamado conda, que seutilizapara instalar, actualizar y gestionar paquetes, así como para crear y gestionar entornosvirtuales.
+
+## Entornos virtuales
+
+**Los entornos virtuales se pueden describir como directorios de instalación aislados. Este aislamiento te permite localizar la instalación de las dependencias de tuproyecto, sin obligarte a instalarlas en todo el sistema.** 
+
+## Contexto
+Imagina que tienes dos aplicaciones, App1 y App2. Ambos usan el paquete Numpy, perorequieren versiones diferentes. Si instala **Numpy** versión 2.3 para App1, no podrá ejecutar
+App2 porque requiere la versión 3.1.  
+Aquí es donde los entornos virtuales son útiles. 
+- Puedes tener varios entornos, con varios conjuntos de paquetes, sin conflictosentreellos. De esta manera, los requisitos de diferentes proyectos se pueden satisfacer al
+mismo tiempo. 
+- Puedes lanzar fácilmente tu proyecto con sus propios módulos dependientes. 
+
+## Virtualenv
+
+virtualenv es una herramienta que se utiliza para crear entornos Python aislados. Creaunacarpeta que contiene todos los ejecutables necesarios para usar los paquetes que
+necesitaría un proyecto de Python. Para instalarlo usamos **pip**
+
+```bash
+pip install virtualenv
+```
+
+Verifica la instalación con el siguiente comando:
+
+```bash
+virtualenv --version
+```
+
+## Crear un entorno
+Para crear un entorno virtual se utiliza el siguiente comando:
+
+```bash
+virtualenv --no-site-packages my-env
+```
+
+**--no-site-packages:** Esta opción indica a virtualenv que no incluya los paquetes del sitioglobal al crear el entorno virtual. Anteriormente, los entornos virtuales incluían
+automáticamente los paquetes del sitio global, pero esto puede provocar problemas decompatibilidad y dependencias entre proyectos. Usar --no-site-packages garantiza queel
+entorno virtual esté limpio y aislado.  
+Esto crea una carpeta en el directorio actual con el nombre del entorno (my-env/). Estacarpeta contiene los directorios para instalar módulos y ejecutables de Python. También se puede especificar la versión de Python con la que se quiere trabajar. Simplemente usa el argumento --  
+python=C:\Users\NombreUsuario\AppData\Local\Programs\Python\Python310. Por ejemplo, python3.10:
+
+```bash
+virtualenv --python=/usr/bin/python3.10 my-env
+```
+
+## Lista de entornos
+Puedes enumerar los entornos disponibles con:
+
+```bash
+lsvirtualenv
+```
+
+## Activar un entorno
+Antes de utilizar el entorno, debes activarlo:
+
+```bash
+source my-env/bin/activate
+```
+
+Esto asegura que solo se usen los paquetes bajo **my-env/.**  
+Se podrá visualizar que el nombre del entorno se muestra a la izquierda de la línea decomandos. De esta forma se puede ver cuál es el entorno activo.  
+## En Windows es un poco diferente:
+
+### Activar el entorno virtual:
+Para activar el entorno virtual en Windows, se utiliza el script de activación específicoquese encuentra en la carpeta Scripts dentro del directorio del entorno virtual. 
+
+```bash
+.\my-env\Scripts\activate
+```
+
+**Nota:** por qué no funciona el comando **source** en Windows:
+El comando **source** es específico de los sistemas tipo Unix (como Linux y macOS) y seutiliza para ejecutar scripts dentro de la shell actual. En Windows, el equivalente de source es el operador . (punto). Esto en el caso de que se use el CMD pero si se usa git bash el
+comando **source** funciona correctamente.
+
+## Instalar paquetes
+Se puede instalar paquetes uno por uno o configurando un archivo requirements.txt para el
+proyecto.
+ 
+```bash
+pip install numpy
+pip install -r requirements.txt
+```
+
+Si se quiere crear un archivo requirements.txt a partir de los paquetes ya instalados, ejecuta el siguiente comando:
+
+```bash
+pip freeze > requirements.txt
+```
+
+El archivo contendrá la lista de todos los paquetes instalados en el entorno actual y susrespectivas versiones. Esto ayudará a lanzar el proyecto con sus propios módulos
+dependientes. 
+
+## Desactivar un entorno
+Si has terminado de trabajar con el entorno virtual, puedes desactivarlo con:
+
+```bash
+deactivate
+```
+
+Esto nos devuelve al intérprete de Python predeterminado del sistema con todas sus
+bibliotecas instaladas. 
+
+## Eliminar un entorno
+Simplemente elimina la carpeta del entorno. 
+
+## Alternativa “venv” 
+Venv es un módulo integrado en Python que nos permite crear entornos virtuales demaneranativa. 
+##Crear un nuevo entorno virtual:
+Comando para crear el entorno virtual:
+
+```bash
+python -m venv my-env
+```
+
+Esto creará un nuevo directorio llamado my-env que contendrá el entorno virtual.
+
+## Activar el entorno virtual:
+Para activar el entorno virtual en Windows, necesitamos ejecutar el script de activaciónquese encuentra dentro de la carpeta Scripts del directorio de nuestro entorno virtual. Conel
+siguiente comando: 
+
+```bash
+.\my-env\Scripts\activate
+```
+
+Después de ejecutar este comando, deberíamos ver (my-env) al principio de la líneadecomandos, indicando que el entorno virtual está activo. 
+
+## Desactivar el entorno virtual:
+Para desactivar el entorno virtual en cualquier momento, simplemente ejecuta el siguientecomando:
+
+```bash
+deactivate
+```
+
+Esto te llevará de vuelta al entorno de Python global. 
+
+## Ejecución de script deshabilitado
+Se puede dar el caso de que nos tengamos habilitado la ejecución de scripts en Windows
+![modulos_librerias_entornos_virtuales](https://res.cloudinary.com/du2qoqncg/image/upload/v1719106225/modulos_librerias_entornos_virtuales_eumxbn.jpg)  
+Para solucionarlo tenemos que seguir los siguientes pasos:
+
+### 1. Abrir PowerShell como administrador:
+Para cambiar la política de ejecución de scripts en Windows, primero necesitamos abrir
+PowerShell como administrador. Podemos hacerlo buscando "PowerShell" en el menúdeinicio, haciendo clic derecho sobre él y seleccionando "Ejecutar como administrador".
+
+### 2. Verificar la política de ejecución actual:
+Una vez que tengamos PowerShell abierto como administrador, podemos verificar lapolíticade ejecución actual ejecutando el siguiente comando:
+
+```bash
+Get-ExecutionPolicy
+```
+
+Esto nos mostrará la política de ejecución actual. Si la política de ejecución es **Restricted**, significa que los scripts no pueden ejecutarse en el sistema y tendremos que cambiarla. 
+
+### 3. Cambiar la política de ejecución:
+Para cambiar la política de ejecución y permitir la ejecución de scripts, se debe ejecutar el
+siguiente comando en PowerShell como administrador:
+
+```bash
+Set-ExecutionPolicy RemoteSigned
+```
+
+Este comando establece la política de ejecución en "RemoteSigned", lo que permitelaejecución de scripts locales firmados digitalmente y scripts remotos sin firma. 
+
+### 4. Confirmar el cambio:
+Después de ejecutar el comando para cambiar la política de ejecución, te pedirá que confirmes el cambio. Ingresa Y y presiona Enter para confirmar. Presiona Y hasta que desaparezcan las preguntas.

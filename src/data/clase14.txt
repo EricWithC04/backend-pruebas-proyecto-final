@@ -1,0 +1,87 @@
+# ¿Qué es "Optimizar" un Algoritmo?
+
+## Introducción
+
+La optimización de algoritmos es un aspecto fundamental en la ciencia de la computación y en el desarrollo de software. Optimizar un algoritmo implica mejorar su eficiencia para que pueda resolver problemas de manera más rápida y utilizando menos recursos. En esta clase, exploraremos el concepto de optimización de algoritmos, su importancia y algunos principios básicos.
+
+## Definición de Optimización de Algoritmos
+
+Optimizar un algoritmo se refiere al proceso de hacer que un algoritmo sea más eficiente en términos de tiempo de ejecución (velocidad) y/o consumo de recursos (memoria). Esto puede incluir reducir el tiempo que tarda en ejecutarse, la cantidad de memoria que utiliza, o ambos.
+
+### Ejemplo de Optimización
+
+Considera un algoritmo simple para encontrar la suma de los primeros `n` números naturales.
+
+#### Algoritmo No Optimizado
+
+```python
+def suma_no_optimizada(n):
+    suma = 0
+    for i in range(1, n + 1):
+        suma += i
+    return suma
+
+print(suma_no_optimizada(100))
+```
+
+#### Algoritmo Optimizado
+
+```python
+def suma_optimizada(n):
+    return n * (n + 1) // 2
+
+print(suma_optimizada(100))
+```
+
+En el primer caso, el algoritmo tiene una complejidad de tiempo de O(n), mientras que el segundo algoritmo tiene una complejidad de tiempo de O(1), lo que significa que el tiempo de ejecución es constante sin importar el tamaño de n.
+
+## Importancia de la Optimización
+
+### Eficiencia del Tiempo de Ejecución
+
+En muchos casos, la velocidad de un algoritmo es crucial, especialmente cuando se trabaja con grandes volúmenes de datos o en aplicaciones en tiempo real. Un algoritmo optimizado puede reducir significativamente el tiempo de procesamiento.
+
+### Uso de Memoria
+
+La optimización también se enfoca en reducir la cantidad de memoria que un algoritmo consume. Esto es importante en sistemas con recursos limitados y puede mejorar el rendimiento general del programa.
+
+### Escalabilidad
+
+Los algoritmos optimizados son más escalables y pueden manejar mejor aumentos en el tamaño de los datos. Esto es esencial para aplicaciones que deben procesar grandes cantidades de datos de manera eficiente.
+
+## Principios Básicos de la Optimización de Algoritmos
+
+### Análisis de Complejidad
+
+La complejidad de un algoritmo se analiza en términos de su comportamiento en el peor caso, promedio y mejor caso. Esto se expresa comúnmente utilizando la notación Big-O.
+
+- **O(1):** Constante.
+- **O(log n):** Logarítmica.
+- **O(n):** Lineal.
+- **O(n log n):** Logarítmica lineal.
+- **O(n^2):** Cuadrática.
+
+### Identificación de Cuellos de Botella
+
+Es fundamental identificar las partes del código que consumen más recursos. Estas áreas, conocidas como cuellos de botella, son los puntos críticos para la optimización.
+
+## Algoritmos y Estructuras de Datos Apropiados
+
+La elección de algoritmos y estructuras de datos adecuados puede tener un impacto significativo en el rendimiento del programa. Por ejemplo, el uso de una lista enlazada frente a un array, o la implementación de un algoritmo de búsqueda binaria en lugar de una búsqueda lineal.
+
+## Técnicas de Optimización
+
+Algunas técnicas comunes de optimización incluyen:
+
+- **Memoización y Caché:** Almacenar resultados de cálculos costosos y reutilizarlos cuando sea necesario.
+- **Dividir y Vencer:** Dividir el problema en subproblemas más pequeños y resolverlos individualmente.
+- **Eliminación de Subexpresiones Comunes:** Reutilizar los resultados de subexpresiones comunes en lugar de recalcularlas.
+
+## Conclusión
+
+Optimizar un algoritmo es un proceso crucial para mejorar la eficiencia de los programas. Comprender los conceptos básicos de la complejidad del tiempo y el espacio, identificar cuellos de botella y aplicar técnicas de optimización adecuadas puede llevar a soluciones más rápidas y eficientes. En las próximas clases, exploraremos más a fondo diversas técnicas y estrategias para la optimización de algoritmos.
+
+---
+
+**Autor:** Eric Alejandro Mercado  
+**Fecha:** 23 de Junio, 2024

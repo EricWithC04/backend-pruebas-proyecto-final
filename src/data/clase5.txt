@@ -1,0 +1,51 @@
+# Debugging
+
+## Paso 1: Instalación de extensiones
+Abre Visual Studio Code. Ve a la pestaña de extensiones en la barra lateral izquierda (el icono de cuadrados apilados)
+o presiona Ctrl+Shift+X. Busca "Python" en el mercado de extensiones.
+Instala la extensión oficial de Python proporcionada por Microsoft.  
+![debugging_1](https://res.cloudinary.com/du2qoqncg/image/upload/v1719103316/debugging_1_qxe1vw.jpg)
+
+## Paso 2: Colocar puntos de interrupción
+Abre el archivo de Python en el que deseas depurar. Haz clic en la columna a la izquierda del número de línea donde deseas establecer un punto
+de interrupción. Debería aparecer un punto rojo, indicando que se ha establecido un punto
+de interrupción.  
+![debugging_2](https://res.cloudinary.com/du2qoqncg/image/upload/v1719103316/debugging_2_nwykhp.jpg)
+
+
+## Paso 3: Iniciar el depurador
+Ve al menú de Visual Studio Code y selecciona Run > Start Debugging, o simplemente
+presiona F5. Esto iniciará el depurador y ejecutará tu código hasta que alcance el primer punto de
+interrupción. La ejecución se detendrá en el punto de interrupción y podrás inspeccionar el estado de tu
+programa.  
+![debugging_3](https://res.cloudinary.com/du2qoqncg/image/upload/v1719103315/debugging_3_jhyntn.jpg)  
+![debugging_4](https://res.cloudinary.com/du2qoqncg/image/upload/v1719103315/debugging_4_a8bqda.jpg)
+
+## Paso 4: Navegación y control del depurador
+Una vez que el depurador se ha detenido en un punto de interrupción, puedes hacer varias
+cosas:
+
+### Continuar la ejecución: 
+Puedes continuar ejecutando el código hasta el próximo punto de
+interrupción o hasta que termine, utilizando el botón "Continuar" en la barra de herramientas
+de depuración o presionando F5. 
+
+### Paso a paso: 
+Puedes ejecutar el código línea por línea, paso a paso, utilizando los botones
+"Paso a paso" en la barra de herramientas de depuración o las teclas de acceso directo
+asociadas (F10 para paso a paso, F11 para paso a paso en la función actual).
+
+### Inspeccionar variables: 
+Mientras estás en el modo de depuración, puedes ver los valores
+de las variables locales y globales en la ventana "Variables" en la barra lateral izquierda. 
+
+### Modificar variables: 
+En algunos casos, puedes modificar el valor de las variables durante la depuración para probar diferentes escenarios.  
+![debugging_5](https://res.cloudinary.com/du2qoqncg/image/upload/v1719103315/debugging_5_wbjuie.jpg)  
+![debugging_6](https://res.cloudinary.com/du2qoqncg/image/upload/v1719103315/debugging_6_ypumrt.jpg)
+
+## Paso 5: Finalizar la depuración
+Una vez que hayas terminado de depurar, puedes salir del modo de depuración haciendo
+clic en el botón "Detener" en la barra de herramientas de depuración o seleccionando Run >
+Stop Debugging en el menú.  
+![debugging_7](https://res.cloudinary.com/du2qoqncg/image/upload/v1719103316/debugging_7_mj8vtt.jpg)

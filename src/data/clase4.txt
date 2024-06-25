@@ -1,0 +1,172 @@
+# Sintaxis, Semántica y Reglas de Python
+
+## Introducción
+
+Para dominar cualquier lenguaje de programación, es fundamental entender su sintaxis y semántica. La sintaxis se refiere a las reglas que dictan cómo se debe escribir el código, mientras que la semántica se ocupa del significado de las construcciones del lenguaje. Python es conocido por su sintaxis clara y legible, lo que lo convierte en una excelente opción tanto para principiantes como para programadores experimentados.
+
+## Sintaxis de Python
+
+### Indentación
+
+A diferencia de muchos otros lenguajes de programación, Python utiliza la indentación para definir bloques de código. Esto hace que el código sea más legible y estructurado.
+
+Ejemplo:
+```python
+if True:
+    print("Esto está dentro del bloque if")
+    if False:
+        print("Esto no se imprimirá")
+print("Esto está fuera del bloque if")
+```
+
+### Comentarios
+
+Los comentarios en Python se utilizan para explicar el código y no se ejecutan. Se pueden hacer comentarios de una sola línea usando # o comentarios de varias líneas utilizando comillas triples """.
+
+Ejemplo:
+```python
+# Esto es un comentario de una sola línea
+"""
+Esto es un comentario
+de varias líneas
+"""
+print("Hola, Mundo!")  # Esto imprime un mensaje
+
+```
+
+### Variables y Tipos de Datos
+
+Las variables en Python se crean automáticamente cuando se asigna un valor a un identificador. No es necesario declarar el tipo de variable explícitamente.
+
+Ejemplo:
+
+```python
+x = 10          # Entero
+y = 3.14        # Flotante
+nombre = "Ana"  # Cadena de texto
+es_activo = True  # Booleano
+
+```
+
+### Operadores Básicos
+
+Python soporta una variedad de operadores, como operadores aritméticos, de comparación, lógicos y de asignación.
+
+Ejemplo:
+
+```python
+# Operadores aritméticos
+a = 10 + 5
+b = 10 - 5
+c = 10 * 5
+d = 10 / 5
+e = 10 % 3
+
+# Operadores de comparación
+f = (10 == 5)   # False
+g = (10 != 5)   # True
+h = (10 > 5)    # True
+
+# Operadores lógicos
+i = (True and False)  # False
+j = (True or False)   # True
+
+# Operadores de asignación
+k = 10
+k += 5  # k = k + 5
+
+```
+
+## Semántica de Python
+
+### Tipado Dinámico
+
+Python es un lenguaje de tipado dinámico, lo que significa que el tipo de una variable se determina en tiempo de ejecución y no es necesario declararlo explícitamente. Esto hace que Python sea flexible pero también puede introducir errores si no se tiene cuidado.
+
+Ejemplo:
+```python
+x = 10        # x es un entero
+x = "diez"    # ahora x es una cadena de texto
+
+```
+
+### Mutabilidad
+
+En Python, algunos tipos de datos son mutables (pueden ser cambiados después de su creación) mientras que otros son inmutables (no pueden ser cambiados después de su creación).
+
+Ejemplos:
+
+```python
+# Lista (mutable)
+lista = [1, 2, 3]
+lista.append(4)  # lista ahora es [1, 2, 3, 4]
+
+# Tupla (inmutable)
+tupla = (1, 2, 3)
+# tupla.append(4)  # Esto dará un error
+
+```
+
+### Manejo de Errores
+
+Python utiliza estructuras de control de flujo para manejar errores y excepciones. La construcción try...except se usa para capturar y manejar excepciones.
+
+Ejemplo:
+```python
+try:
+    division = 10 / 0
+except ZeroDivisionError:
+    print("Error: División por cero")
+
+```
+
+## Reglas y Buenas Prácticas en Python
+
+### Nombres de Variables y Funciones
+
+- Utiliza nombres descriptivos y en minúsculas, separando las palabras con guiones bajos (_).
+- Las funciones también deben tener nombres descriptivos y seguir la misma convención.
+
+Ejemplo:
+```python
+mi_variable = 5
+
+def suma_dos_numeros(a, b):
+    return a + b
+
+```
+
+### Estructura de Código
+
+- Mantén líneas de código de menos de 80 caracteres.
+- Utiliza espacios en lugar de tabulaciones para la indentación (4 espacios por nivel de indentación).
+
+### Documentación
+
+- Utiliza docstrings para documentar módulos, clases y funciones.
+- Incluye comentarios solo cuando sea necesario para entender el código.
+
+Ejemplo:
+```python
+def area_circulo(radio):
+    """
+    Calcula el área de un círculo dado su radio.
+    
+    Parámetros:
+    radio (float): El radio del círculo.
+    
+    Retorna:
+    float: El área del círculo.
+    """
+    return 3.1416 * radio ** 2
+
+```
+
+## Conclusión
+
+Comprender la sintaxis, la semántica y las reglas de Python es crucial para escribir código efectivo y mantenible. Python se destaca por su simplicidad y claridad, lo que permite a los desarrolladores concentrarse en resolver problemas complejos sin preocuparse por detalles sintácticos complicados.
+
+---
+
+**Autor:** Eric Alejandro Mercado
+**Fecha:** 22 de Junio, 2024

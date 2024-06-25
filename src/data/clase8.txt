@@ -1,0 +1,339 @@
+# NumPy: estructuras matriciales
+
+NumPy es una librería de Python que posibilita el trabajar con vectores, matrices y arreglosn-dimensionales de manera eficiente. Numpy tiene una amplia gama de opciones para trabajar, entre ellas están el dominio del álgebra lineal, la transformación de Fourier y las matrices.  
+
+Los objetos de arrays en Numpy se denominan **ndarray** y se encuentran en el núcleo del
+paquete de la librería. Los **ndarrays** capturan arrays con **n_dimensiones** y diferentestiposde datos.  
+Una de las grandes ventajas de los arrays de Numpy es que son bastante ordenados, ya que, a diferencia de las listas en Python (que crecen de manera dinámica), este tipo de matrices ya tienen un tamaño fijo en su creación. De modo que cambiar el tamaño de un **ndarray** creará una nueva matriz y eliminará la original.  
+
+Es necesario que todos los elementos de un array tengan el mismo tipo de datos, porque así tendrán el mismo tamaño en memoria. La única excepción es que se pueden tener matrices de objetos, lo cual permite las matrices de elementos de diferentes tamaños.  
+
+Las matrices de Numpy son mucho mejores que las listas en muchas ocasiones, ya que se almacenan en un lugar continuo en la memoria, a diferencia de las listas. Por tanto, durante las transacciones es mucho más rápido acceder a ellas y manipularlas. Esto es lo que se conoce como cercanía de referencias o locality of reference.  
+
+Una de las grandes ventajas de los arrays de Numpy es que permiten crear operaciones matemáticas de alta complejidad. Al mismo tiempo, se puede trabajar con ecuaciones lineales de álgebra lineal o estructuras de datos, entre otras operaciones. 
+
+## ¿Por qué usar Numpy?
+
+Numpy no está escrito en lenguaje Python o, al menos, no por completo. Está escrito en Python solo parcialmente, ya que la mayoría de las partes que requieren un cálculo rápido están escritas en C o C++. Esta es una de las razones por las que Numpy es tan rápido, porque está escrito en C y este, al trabajar a bajo nivel y compilar a código máquina directamente, ofrece un gran poder. 
+
+## ¿Cuál es la diferencia entre arrays y matrices?
+Las matrices, en un sentido estricto, son un tipo de array de dos dimensiones, ya que poseen un largo y un ancho preciso.  
+Los arrays, por otro lado, no tienen un número definido de dimensiones; pueden ser de **n_dimensiones** e ir cambiando. Esto quiere decir que pueden ser cubos, hipercubos o cualquier otro tipo de forma tridimensional, contrario a las matrices, que poseen una forma rectangular con sus filas y columnas bien definidas.
+
+### Por lo cual:
+- Los arrays de **una** dimensión representan vectores. 
+- Los arrays de **dos** dimensiones representan matrices. 
+- Los arrays más grandes representan tensores.
+![numpy_1](https://res.cloudinary.com/du2qoqncg/image/upload/v1719112329/numpy_1_pe0bnd.jpg)
+
+## ¿Qué son los Arreglos de NumPy?
+
+Los arreglos NumPy son la forma principal de almacenar datos utilizando la biblioteca NumPy. Son similares a las listas normales en Python, pero tienen la ventaja de ser más rápidas y tener más métodos integrados.  
+
+Los arreglos de NumPy son creados llamando al método **array()** de la librería de NumPy. Dentro del método, deberías pasar una lista.  
+
+### Ejemplo básico
+
+```python
+import numpy as np
+sample_list = [1, 2, 3]
+np.array(sample_list) # array([1,2,3])
+```
+
+El contenedor **array()** indica que esta ya no es una lista normal de Python. En cambio, es un arreglo de NumPy.  
+Hay dos tipos diferentes de arreglos de NumPy: **vectores** y **matrices**.  
+
+Los vectores son arreglos de NumPy uni-dimensionales y se ve así:
+
+```python
+import numpy as np
+my_vector = np.array(['este', 'es', 'un', 'vector'])
+```
+
+Las matrices son arreglos bi-dimensionales y son creadas pasando una lista de lista dentro del método np.array(). Un ejemplo es el siguiente. 
+
+```python
+import numpy as np
+my_matrix = [[1, 2, 3],[4, 5, 6],[7, 8, 9]]
+np.array(my_matrix)
+```
+
+## Arreglos unidimensionales (Vectores)
+Para definir un arreglo unidimensional (vector), debemos pasar una lista de valores
+(usualmente numéricos), por ejemplo:
+
+```python
+import numpy as np
+x = np.array([1,2,3,5,6,7,8,9,10])
+type(x) # numpy.ndarray
+```
+
+Otras funciones útiles que permiten generar arrays son:  
+
+**np.empty(dimensiones):** Crea y devuelve una referencia a un array vacío con las dimensiones especificadas en la tupla dimensiones.  
+**np.zeros(dimensiones):** Crea y devuelve una referencia a un array con las dimensiones especificadas en la tupla dimensiones cuyos elementos son todos ceros.  
+**np.ones(dimensiones):** Crea y devuelve una referencia a un array con las dimensiones especificadas en la tupla dimensiones cuyos elementos son todos unos.  
+**np.full(dimensiones, valor):** Crea y devuelve una referencia a un array con las dimensiones especificadas en la tupla dimensiones cuyos elementos son todos valor.  
+**np.identity(n):** Crea y devuelve una referencia a la matriz identidad de dimensión n.  
+**np.arange(inicio, fin, salto):** Crea y devuelve una referencia a un array de una dimensión cuyos elementos son la secuencia desde inicio hasta fin tomando valores cada salto.  
+**np.linspace(inicio, fin, n):** Crea y devuelve una referencia a un array de una dimensión cuyos elementos son la secuencia de n valores equidistantes desde inicio hasta fin.  
+**np.random.random(dimensiones):** Crea y devuelve una referencia a un array con las dimensiones especificadas en la tupla dimensiones cuyos elementos son aleatorios. 
+
+## Atributos de un array
+
+Existen varios atributos y funciones que describen las características de un array.  
+
+**a.ndim:** Devuelve el número de dimensiones del array a.  
+**a.shape:** Devuelve una tupla con las dimensiones del array a.  
+**a.size:** Devuelve el número de elementos del array a.  
+**a.dtype:** Devuelve el tipo de datos de los elementos del array a.  
+
+## Acceso a los elementos de un array
+Para acceder a los elementos contenidos en un array se usan índices al igual que para acceder a los elementos de una lista, pero indicando los índices de cada dimensión separados por comas.  
+
+Al igual que para listas, los índices de cada dimensión comienzan en 0.  
+
+También es posible obtener subarrays con el operador dos puntos : indicando el índice inicial y el siguiente al final para cada dimensión, de nuevo separados por comas. 
+
+```python
+import numpy as np
+a = np.array([[1, 2, 3], [4, 5, 6]])
+print(a[1, 0]) # Acceso al elemento de la fila 1 columna 0
+# 4
+print(a[1][0]) # Otra forma de acceder al mismo elemento
+# 4
+print(a[:, 0:2])
+# [[1 2][4 5]]
+```
+
+## Filtrado de elementos de un array
+Una característica muy útil de los arrays es que es muy fácil obtener otro array con los elementos que cumplen una condición.  
+**a[condición]:** Devuelve una lista con los elementos del array a que cumplen la condición. 
+
+```python
+import numpy as np
+a = np.array([[1, 2, 3], [4, 5, 6]])
+print(a[(a % 2 == 0)])
+# [2 4 6]
+```
+
+## Operaciones aritméticas
+
+NumPy facilita realizar operaciones aritméticas con arreglos:
+- Se pueden usar el arreglo y un sólo número, 
+- O realizar las operaciones entre dos arreglos. 
+
+## Operaciones a nivel de elemento:
+
+### Suma (+):
+
+```python
+import numpy as np
+
+# Operación de suma elemento por elemento
+arr_suma_elemento = np.array([1, 2, 3, 4, 5]) + 10
+print("Operación de suma elemento por elemento:")
+print(arr_suma_elemento)
+```
+
+### Resta (-):
+
+```python
+import numpy as np
+
+# Operación de resta elemento por elemento
+arr_resta_elemento = np.array([1, 2, 3, 4, 5]) - 10
+print("Operación de resta elemento por elemento:")
+print(arr_resta_elemento)
+```
+
+### Multiplicación (*):
+
+```python
+import numpy as np
+
+# Operación de multiplicación elemento por elemento
+arr_multiplicacion_elemento = np.array([1, 2, 3, 4, 5]) * 2
+print("Operación de multiplicación elemento por elemento:")
+print(arr_multiplicacion_elemento)
+```
+
+### División (/):
+
+```python
+import numpy as np
+
+# Operación de división elemento por elemento
+arr_division_elemento = np.array([1, 2, 3, 4, 5]) / 2
+print("Operación de división elemento por elemento:")
+print(arr_division_elemento)
+```
+
+### Módulo (%):
+
+```python
+import numpy as np
+
+# Operación de módulo elemento por elemento
+arr_modulo_elemento = np.array([10, 11, 12, 13, 14]) % 3
+print("Operación de módulo elemento por elemento:")
+print(arr_modulo_elemento)
+```
+
+### Potencia (**):
+
+```python
+import numpy as np
+
+# Operación de potencia elemento por elemento
+arr_potencia_elemento = np.array([1, 2, 3, 4, 5]) ** 2
+print("Operación de potencia elemento por elemento:")
+print(arr_potencia_elemento)
+```
+
+## Operaciones entre matrices:
+
+### Suma (+):
+
+```python
+import numpy as np
+
+# Definimos dos arreglos de NumPy
+arr1 = np.array([1, 2, 3, 4, 5])
+arr2 = np.array([6, 7, 8, 9, 10])
+# Operación de suma entre dos arreglos
+arr_suma_arreglos = arr1 + arr2
+print("Operación de suma entre dos arreglos:")
+print(arr_suma_arreglos)
+```
+
+### Resta (-):
+
+```python
+import numpy as np
+
+# Operación de resta entre dos arreglos
+arr_resta_arreglos = arr2 - arr1
+print("Operación de resta entre dos arreglos:")
+print(arr_resta_arreglos)
+```
+
+### Multiplicación (*):
+
+```python
+import numpy as np
+
+# Operación de multiplicación entre dos arreglos
+arr_multiplicacion_arreglos = arr1 * arr2
+print("Operación de multiplicación entre dos arreglos:")
+print(arr_multiplicacion_arreglos)
+```
+
+### División (/):
+
+```python
+import numpy as np
+
+# Operación de división entre dos arreglos
+arr_division_arreglos = arr2 / arr1
+print("Operación de división entre dos arreglos:")
+print(arr_division_arreglos)
+```
+
+**Nota:** La división tiene una excepción notable en comparación con las otras operaciones matemáticas. Dado que no podemos dividir por cero, al hacerlo, el campo correspondiente se completará con un valor nan, que es la abreviatura de Python para "No es un número"
+(“Not A Number”).  
+
+### Módulo (%):
+
+```python
+import numpy as np
+
+# Definimos dos arreglos de NumPy
+arr1 = np.array([10, 11, 12, 13, 14])
+arr2 = np.array([3, 4, 5, 6, 7])
+
+# Operación de módulo entre dos arreglos
+arr_modulo = arr1 % arr2
+print("Operación de módulo elemento por elemento:")
+print(arr_modulo)
+```
+
+### Potencia (**):
+
+```python
+import numpy as np
+
+# Definimos dos arreglos de NumPy
+arr1 = np.array([1, 2, 3, 4, 5])
+arr2 = np.array([2, 3, 4, 5, 6])
+
+# Operación de potencia entre dos arreglos
+arr_potencia = arr1 ** arr2
+print("Operación de potencia elemento por elemento:")
+print(arr_potencia)
+```
+
+## Álgebra matricial
+Numpy incorpora funciones para realizar las principales operaciones algebraicas con vectores y matrices. La mayoría de los métodos algebráicos se agrupan en el submódulo **linalg**.  
+
+Algunas operaciones básicas:
+
+### Producto de matriz-vector:
+
+```python
+import numpy as np
+
+# Definimos una matriz
+A = np.array([[1, 2], [3, 4]])
+# Definimos un vector
+v = np.array([5, 6])
+
+# Producto matriz-vector
+resultado = np.dot(A, v)
+print("Producto matriz-vector:")
+print(resultado)
+```
+
+### Producto de matriz-matriz:
+
+```python
+import numpy as np
+
+# Definimos dos matrices
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6], [7, 8]])
+
+# Producto matriz-matriz
+resultado = np.dot(A, B)
+print("Producto matriz-matriz:")
+print(resultado)
+```
+
+### Usando el operador de @:
+
+```python
+import numpy as np
+
+# Definimos dos matrices
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6], [7, 8]])
+
+# Multiplicación de matrices usando el operador @
+resultado = A @ B
+print("Resultado de la multiplicación de matrices:")
+print(resultado)
+```
+
+### Transposición de una matriz:
+
+```python
+import numpy as np
+
+# Definimos una matriz
+A = np.array([[1, 2], [3, 4]])
+
+# Transposición de la matriz
+resultado = np.transpose(A)
+print("Transposición de la matriz:")
+print(resultado)
+```

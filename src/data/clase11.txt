@@ -1,0 +1,253 @@
+# Obtención de datos a partir de bases de datos SQL
+
+La capacidad de interactuar con bases de datos SQL desde Python es una habilidad
+fundamental para cualquier desarrollador o analista de datos. Python ofrece varias
+bibliotecas que facilitan la conexión y la manipulación de datos en bases de datos SQL, como MySQL, PostgreSQL y MariaDB. Estas bibliotecas proporcionan funciones y métodos
+que permiten establecer conexiones, ejecutar consultas SQL y procesar resultados de
+manera eficiente.  
+
+Instalación del paquete que nos permitirá conectar con mysql
+
+```bash
+pip install mysqlclient
+```
+
+Conexión a la base de datos  
+
+Para conectar a la base de datos vamos a usar el método connect de la librería MySQLdb.  
+
+Como parámetros indicaremos:
+
+- La dirección del servidor de base de datos
+- El usuario que vamos a usar para la conexión. 
+- La contraseña del usuario
+- La base de datos a la que vamos a conectar.  
+
+Nos devuelve un objeto que representa la conexión. Vamos a usar una excepción por si
+tenemos un error al conectar. Al terminar el programa debemos cerrar la conexión usando el
+método close() del objeto conexión. 
+
+```python
+import sys
+import MySQLdb
+try:
+db = MySQLdb.connect("localhost","root","","testdb" )
+except MySQLdb.Error as e:
+print("No se pudo conectar a la base de datos:",e)
+sys.exit(1)
+print("Conexión correcta.")
+db.close()
+```
+
+### Ejecución de instrucciones sql  
+
+Para ejecutar instrucciones sql vamos a usar un objeto de la clase cursor. Por ejemplo
+vamos a insertar datos en la tabla:
+
+```python
+import sys
+import MySQLdb
+try:
+db = MySQLdb.connect("localhost","root","","testdb" )
+except MySQLdb.Error as e:
+print("No puedo conectar a la base de datos:",e)
+sys.exit(1)
+cursor = db.cursor()
+
+# Borrar la tabla
+cursor.execute("DROP TABLE IF EXISTS empleados")
+print("Tabla 'empleados' eliminada (si existía).")
+cursor.execute("""
+
+CREATE TABLE empleados (
+id INT AUTO_INCREMENT PRIMARY KEY,
+nombre VARCHAR(50),
+apellido VARCHAR(50),
+edad INT,
+sexo CHAR(1),
+ingreso DECIMAL(10, 2)
+)
+""")
+print("Tabla 'empleados' creada exitosamente.")
+sql = "INSERT INTO empleados (nombre, apellido, edad, sexo, ingreso)
+VALUES (%s, %s, %s, %s, %s)"
+values = ('José', 'Domingo', 20, 'M', 2000)
+try:
+cursor.execute(sql, values)
+db.commit()
+print("Insertado correctamente")
+except Exception as e:
+print("Error al insertar los datos", e)
+db.rollback()
+db.close()
+```
+
+1) Una vez realizada la conexión hemos creado un objeto de tipo cursor que nos
+permitirá la ejecución de instrucciones sql **(cursor = db.cursor()). Nota: un cursor es un objeto que permite a las** **aplicaciones interactuar con los resultados de una consulta SQL de manera programática, es decir, permite**
+**recorrer y manipular los registros devueltos por una consulta.** 
+2) Hemos guardado en una variable (**sql**) la instrucción que vamos a ejecutar. Los
+datos que vamos a añadir podrían estar guardados en cualquier estructura de datos
+(variables, listas, diccionarios). 
+3) La ejecución de la instrucción la realizamos con el método execute del cursor
+(**cursor.execute(sql)**). Controlamos los fallos con una excepción. 
+4) Además de ejecutar la instrucción tenemos que confirmar el cambio en la base de
+datos para ello usamos el método commit de la conexión (**db.commit()**). 
+5) Si hay algún error (**sección except de la excepción**), volvemos al estado anterior
+de la base de datos con el método rollback de la conexión (**db.rollback()**).  
+
+De esta manera podemos ejecutar cualquier tipo de instrucción sql: inserciones (insert), modificaciones (update), eliminaciones (delete), creación de tablas (create), modificaciones de una tabla (alter).  
+
+### Lectura de información de la tabla
+
+cómo obtener información de una base de datos ejecutando una instrucción **select**. Para
+realizar una consulta de una tabla ejecutaremos una instrucción select como hemos visto en
+el punto anterior. Una vez realizada la consulta podemos usar varios métodos y atributos del
+cursor:
+
+- rowcount(): Es un atributo que nos devuelve el número de registros seleccionados. 
+- fetchone(): Es un método que nos devuelve el siguiente registro seleccionado. Devuelve un sólo registro. 
+- fetchall(): Método que nos devuelve todos los registros seleccionados.
+
+### Mostrar número de registros seleccionados
+
+```python
+import sys
+import MySQLdb
+try:
+db = MySQLdb.connect("localhost","root","","testdb")
+except MySQLdb.Error as e:
+print("No puedo conectar a la base de datos:",e)
+sys.exit(1)
+sql="SELECT * FROM empleados"
+cursor = db.cursor()
+try:
+cursor.execute(sql)
+print("Número de registros seleccionados:", cursor.rowcount)
+except:
+print("Error en la consulta")
+db.close()
+```
+
+### Listar los registros seleccionados
+
+```python
+import sys
+import MySQLdb
+try:
+db = MySQLdb.connect("localhost","root","","testdb" )
+except MySQLdb.Error as e:
+print("No puedo conectar a la base de datos:",e)
+sys.exit(1)
+sql="SELECT * FROM empleados"
+cursor = db.cursor()
+try:
+cursor.execute(sql)
+registros = cursor.fetchall()
+for registro in registros:
+print(registro[0],registro[1],registro[2],registro[3],registro[4])
+except:
+print("Error en la consulta")
+db.close()
+```
+
+- La variable registros guarda todos los registros seleccionados de la consulta. Por
+defecto se devuelve una tupla de tuplas:
+
+```python
+(('José', 'Domingo', 20, 'M', 2000.0), ('Pablo', 'Ruíz', 21, 'M',
+2100.0), ('María', 'López', 22, 'F', 2200.0))
+```
+
+- Podemos recorrer los registros con un for, cada campo de un registro se guardará
+en una posición, por lo que usamos el indice para acceder:
+
+```python
+for registro in registros:
+print(registro[0],registro[1],registro[2],registro[3],registro[4])
+```
+
+Listar los registros seleccionados usando un diccionario
+Si tenemos muchos atributos en una tabla, puede ser complicado usar índices para
+seleccionarlos. Lo ideal sería que el cursor nos devolviera una tupla de diccionarios, y de
+esta manera poder referenciar los atributos por su nombre. Para ello, al crear el cursor
+debemos indicar que su tipo sea DictCursor, para ello:
+
+```python
+cursor = db.cursor(MySQLdb.cursors.DictCursor)
+```
+
+De esta forma al devolver los registros seleccionados se nos devolverá una tupla de
+diccionarios
+
+```python
+({'nombre': 'José', 'apellido': 'Domingo', 'edad': 20, 'sexo': 'M',
+'ingreso': 2000.0},{'nombre': 'Pablo'...
+```
+
+Podemos listar el primer nombre de los empleados de esta forma:
+
+```python
+import sys
+import MySQLdb
+try:
+db = MySQLdb.connect("localhost","root","","testdb")
+except MySQLdb.Error as e:
+print("No puedo conectar a la base de datos:",e)
+sys.exit(1)
+sql="SELECT * FROM empleados"
+cursor = db.cursor(MySQLdb.cursors.DictCursor)
+try:
+cursor.execute(sql)
+registros = cursor.fetchall()
+for registro in registros:
+print(registro["nombre"])
+except:
+print("Error en la consulta")
+db.close()
+```
+
+### Recorriendo los registros seleccionados secuencialmente
+
+Si no tenemos muchos registros el uso de **fetchall()** puede ser adecuado. Pero si tenemos
+gran cantidad de registros puede que tengamos problemas de rendimiento. La solución es ir
+recorriendo los registros seleccionados uno a uno, usando **fetchone()**. En este caso
+podemos usar una estructura while: “mientras haya otro registro, lo proceso.”. El ejemplo
+quedaría de la siguiente manera (imprimimos el nombre y apellido del empleado):
+
+```python
+import sys
+import MySQLdb
+try:
+db = MySQLdb.connect("localhost","usuario","asdasd","testdb")
+except MySQLdb.Error as e:
+print("No puedo conectar a la base de datos:",e)
+sys.exit(1)
+sql="select * from empleados"
+cursor = db.cursor(MySQLdb.cursors.DictCursor)
+try:
+cursor.execute(sql)
+registro = cursor.fetchone()
+while registro:
+print(registro["nombre"],registro["apellido"])
+registro = cursor.fetchone()
+except:
+print("Error en la consulta")
+db.close()
+```
+
+La librería mysqldb sirve para introducir las posibilidades de gestionar una base de datos
+mysql/mariadb usando python3. Además hay otras varias opciones para realizar este
+trabajo, con cualquier manual que use otra de las librerías disponibles nos daremos cuenta
+que la metodología es muy similar, esto es debido a que todas las librerías implementan la
+Python Database API Specification v2.0. Algunas de otras librerías son las siguientes:  
+
+**mysql-connector-python:**
+Una biblioteca oficial de Oracle que proporciona una interfaz Python para conectarse a
+bases de datos MySQL y MariaDB.  
+Podemos instalarlo utilizando: **pip install mysql-connector-python**  
+
+**pymysql:**
+Una biblioteca popular que ofrece una implementación pura de Python de la API de MySQL. Podemos instalarlo utilizando: **pip install pymysql**  
+
+**mariadb:**  
+Una biblioteca específica para conectarse a bases de datos MariaDB desde Python. Podemos instalarlo utilizando: **pip install mariadb**

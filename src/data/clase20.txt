@@ -1,0 +1,84 @@
+# Fundamentos del Aprendizaje Automático
+
+## Introducción
+
+El aprendizaje automático es una rama de la inteligencia artificial que permite a las computadoras aprender y tomar decisiones sin ser programadas explícitamente para cada tarea. En esta clase, exploraremos los conceptos fundamentales del aprendizaje automático, sus tipos y aplicaciones, así como algunos algoritmos básicos utilizados en este campo.
+
+## ¿Qué es el Aprendizaje Automático?
+
+El aprendizaje automático (Machine Learning) es una tecnología que permite a las computadoras aprender a partir de datos y mejorar su rendimiento en tareas específicas a lo largo del tiempo. En lugar de seguir instrucciones predefinidas, los algoritmos de aprendizaje automático identifican patrones en los datos y utilizan estos patrones para hacer predicciones o decisiones.
+
+## Tipos de Aprendizaje Automático
+
+### Aprendizaje Supervisado
+
+En el aprendizaje supervisado, el algoritmo aprende a partir de un conjunto de datos etiquetados, donde cada entrada está asociada con una salida deseada.
+
+- **Ejemplo:** Clasificación de correos electrónicos como "spam" o "no spam".
+- **Algoritmos Comunes:** Regresión lineal, máquinas de soporte vectorial (SVM), redes neuronales.
+
+### Aprendizaje No Supervisado
+
+En el aprendizaje no supervisado, el algoritmo trabaja con datos no etiquetados y busca patrones o estructuras ocultas en los datos.
+
+- **Ejemplo:** Agrupación de clientes en segmentos de mercado basados en comportamientos de compra.
+- **Algoritmos Comunes:** K-means, análisis de componentes principales (PCA), redes neuronales autoencoders.
+
+### Aprendizaje por Refuerzo
+
+En el aprendizaje por refuerzo, el algoritmo aprende a través de la interacción con un entorno dinámico y recibe recompensas o castigos basados en sus acciones.
+
+- **Ejemplo:** Un agente de inteligencia artificial jugando al ajedrez y mejorando con el tiempo.
+- **Algoritmos Comunes:** Q-learning, aprendizaje profundo por refuerzo.
+
+## Componentes Clave del Aprendizaje Automático
+
+### Datos
+
+Los datos son el componente fundamental del aprendizaje automático. La calidad y cantidad de datos disponibles afectan directamente el rendimiento del modelo.
+
+- **Datos de Entrenamiento:** Utilizados para entrenar el modelo.
+- **Datos de Validación:** Utilizados para ajustar los hiperparámetros del modelo.
+- **Datos de Prueba:** Utilizados para evaluar el rendimiento final del modelo.
+
+### Modelos
+
+Un modelo de aprendizaje automático es una representación matemática de un problema que se entrena utilizando datos para hacer predicciones o decisiones.
+
+- **Modelos Lineales:** Como la regresión lineal.
+- **Modelos No Lineales:** Como las redes neuronales.
+
+### Función de Pérdida
+
+La función de pérdida mide qué tan bien o mal se está desempeñando un modelo. El objetivo del entrenamiento es minimizar esta función.
+
+- **Ejemplo:** Error cuadrático medio (MSE) para problemas de regresión.
+
+### Algoritmos de Optimización
+
+Los algoritmos de optimización ajustan los parámetros del modelo para minimizar la función de pérdida.
+
+- **Ejemplo:** Descenso de gradiente.
+
+## Ejemplo Práctico
+
+### Problema: Clasificación de Flores Iris
+
+Queremos construir un modelo que clasifique flores del iris en tres especies diferentes basándose en el largo y ancho de sus sépalos y pétalos.
+
+#### Pasos:
+
+1. **Recolectar Datos:** Utilizar el conjunto de datos Iris.
+2. **Preprocesar Datos:** Limpiar y normalizar los datos.
+3. **Seleccionar un Modelo:** Elegir un modelo de clasificación, como la regresión logística.
+4. **Entrenar el Modelo:** Dividir los datos en conjuntos de entrenamiento y prueba, y entrenar el modelo.
+5. **Evaluar el Modelo:** Medir la precisión del modelo utilizando el conjunto de prueba.
+
+## Conclusión
+
+El aprendizaje automático es una tecnología poderosa que está transformando numerosas industrias. Entender sus fundamentos es crucial para desarrollar modelos eficientes y efectivos. En las próximas clases, profundizaremos en los algoritmos específicos y técnicas avanzadas utilizadas en el aprendizaje automático.
+
+---
+
+**Autor:** Eric Alejandro Mercado  
+**Fecha:** 24 de Junio, 2024
