@@ -5,8 +5,8 @@ import UserModel from "../models/User.model.js";
 import ObservationModel from "../models/Obvservations.model.js";
 import ProgressModel from "../models/Progress.model.js";
 import UnitProgressTable from "../models/Unit_Progress.table.js";
-import ThemeProgessTable from "../models/Theme_Progress.table.js";
-import ExerciseProgressTable from "../models/ExerciseProgress.table.js";
+import ThemeProgressTable from "../models/Theme_Progress.table.js";
+import ExerciseProgressTable from "../models/Exercise_Progress.table.js";
 import sequelize from "./db.js";
 import executeAllSeeds from "../seeds/index.js";
 import app from "../app.js";
@@ -29,8 +29,8 @@ UserModel.belongsTo(ProgressModel, {
 ProgressModel.belongsToMany(UnitModel, { through: UnitProgressTable })
 UnitModel.belongsToMany(ProgressModel, { through: UnitProgressTable })
 
-ProgressModel.belongsToMany(ThemeModel, { through: ThemeProgessTable })
-ThemeModel.belongsToMany(ProgressModel, { through: ThemeProgessTable })
+ProgressModel.belongsToMany(ThemeModel, { through: ThemeProgressTable })
+ThemeModel.belongsToMany(ProgressModel, { through: ThemeProgressTable })
 
 ProgressModel.belongsToMany(ExerciseModel, { through: ExerciseProgressTable })
 ExerciseModel.belongsToMany(ProgressModel, { through: ExerciseProgressTable })

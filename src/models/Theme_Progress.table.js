@@ -3,7 +3,7 @@ import sequelize from '../config/db.js';
 import ThemeModel from './Theme.model.js';
 import ProgressModel from './Progress.model.js';
 
-const ThemeProgessTable = sequelize.define('theme_progess', {
+const ThemeProgressTable = sequelize.define('theme_progess', {
     progressId: {
         type: DataTypes.INTEGER,
         references: {
@@ -25,4 +25,4 @@ const ThemeProgessTable = sequelize.define('theme_progess', {
     }
 });
 
-export default ThemeProgessTable;
+export default ThemeProgressTable;
