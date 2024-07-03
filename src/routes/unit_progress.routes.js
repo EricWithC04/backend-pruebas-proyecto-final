@@ -1,14 +1,14 @@
 import { Router } from 'express'
 import {
     createUnitProgress,
-    deleteUnitProgress,
-    updateUnitProgress
+    updateUnitProgress,
+    deleteUnitProgress
 } from '../controllers/unit_progress.controllers.js'
 
 const router = Router()
 
 router.post("/", createUnitProgress)
-router.put("/:id", deleteUnitProgress)
-router.delete("/:id", updateUnitProgress)
+router.put("/:idUser/:idUnit", updateUnitProgress)
+router.delete("/:id", deleteUnitProgress)
 
 export default router

@@ -19,9 +19,9 @@ export const createUnitProgress = async (req, res) => {
 
 export const updateUnitProgress = async (req, res) => {
     try {
-        const { id } = req.params
+        const { idUser, idUnit } = req.params
 
-        const updatedUnitProgress = await UnitProgressService.updateUnitProgress(id, req.body)
+        const updatedUnitProgress = await UnitProgressService.updateUnitProgress(idUser, idUnit, req.body)
 
         if (!updatedUnitProgress) {
             res.status(500).send({
