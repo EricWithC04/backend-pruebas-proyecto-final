@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import {
+    getAllUserThemeProgress,
     createThemeProgress,
     updateThemeProgress,
     deleteThemeProgress
@@ -7,6 +8,7 @@ import {
 
 const router = Router()
 
+router.get("/:idUser", getAllUserThemeProgress)
 router.post("/", createThemeProgress)
 router.put("/:idProgress/:idTheme", updateThemeProgress)
 router.delete("/:id", deleteThemeProgress)

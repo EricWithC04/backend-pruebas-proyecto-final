@@ -1,5 +1,13 @@
 import ThemeProgressTable from "../models/Theme_Progress.table.js";
 
+export const getUserThemeProgress = async (idUser) => {
+    const allThemeProgress = await ThemeProgressTable.findAll({
+        attributes: ['themeId', 'complete'], 
+        where: { progressId: idUser } 
+    })
+    return allThemeProgress
+}
+
 export const createThemeProgress = async (data) => {
     const newThemeProgress = await ThemeProgressTable.create(data)
     return newThemeProgress

@@ -1,5 +1,24 @@
 import * as ThemeProgressService from '../services/Theme_Progress.service.js'
 
+export const getAllUserThemeProgress = async (req, res) => {
+    try {
+        const { idUser } = req.params
+
+        const userThemeProgress = await ThemeProgressService.getUserThemeProgress(idUser)
+
+        if (!userThemeProgress.length) {
+            res.status(404).send({
+                status: 404,
+                message: 'No se ha encontrado el progreso!'
+            })
+        }
+
+        return res.status(200).send(userThemeProgress)
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 export const createThemeProgress = async (req, res) => {
     try {
         const newThemeProgress = await ThemeProgressService.createThemeProgress(req.body)
