@@ -19,9 +19,9 @@ export const createThemeProgress = async (req, res) => {
 
 export const updateThemeProgress = async (req, res) => {
     try {
-        const { id } = req.params
+        const { idProgress, idTheme } = req.params
 
-        const updatedThemeProgress = await ThemeProgressService.updateThemeProgress(id, req.body)
+        const updatedThemeProgress = await ThemeProgressService.updateThemeProgress(idProgress, idTheme, req.body)
 
         if (!updatedThemeProgress) {
             res.status(500).send({

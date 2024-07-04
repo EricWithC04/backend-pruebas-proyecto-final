@@ -5,8 +5,8 @@ export const createThemeProgress = async (data) => {
     return newThemeProgress
 }
 
-export const updateThemeProgress = async (id, data) => {
-    const updatedThemeProgress = await ThemeProgressTable.update(data, { where: { id } })
+export const updateThemeProgress = async (idProgress, idTheme, data) => {
+    const updatedThemeProgress = await ThemeProgressTable.update(data, { where: { progressId: idProgress, themeId: idTheme } })
     return updatedThemeProgress
 }
 
