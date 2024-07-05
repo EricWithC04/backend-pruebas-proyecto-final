@@ -5,6 +5,7 @@ import unitRouter from './routes/unit.routes.js'
 import themeRouter from './routes/theme.routes.js'
 import exerciseRouter from './routes/exercise.routes.js'
 import observationRouter from './routes/observation.routes.js'
+import progressRouter from './routes/progress.routes.js'
 import unitProgressRouter from './routes/unit_progress.routes.js'
 import themeProgressRouter from './routes/theme_progress.routes.js'
 import exerciseProgressRouter from './routes/theme_progress.routes.js'
@@ -25,6 +26,7 @@ app.use('/unit', unitRouter)
 app.use('/theme', themeRouter)
 app.use('/exercise', exerciseRouter)
 app.use('/observation', observationRouter)
+app.use('/progress', progressRouter)
 app.use('/unit_progress', unitProgressRouter)
 app.use('/theme_progress', themeProgressRouter)
 app.use('/exercise_progress', exerciseProgressRouter)
