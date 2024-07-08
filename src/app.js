@@ -9,6 +9,7 @@ import progressRouter from './routes/progress.routes.js'
 import unitProgressRouter from './routes/unit_progress.routes.js'
 import themeProgressRouter from './routes/theme_progress.routes.js'
 import exerciseProgressRouter from './routes/theme_progress.routes.js'
+import evaluationRouter from './routes/evaluation.routes.js'
 import cors from 'cors'
 import morgan from 'morgan'
 import helmet from 'helmet'
@@ -30,5 +31,6 @@ app.use('/progress', progressRouter)
 app.use('/unit_progress', unitProgressRouter)
 app.use('/theme_progress', themeProgressRouter)
 app.use('/exercise_progress', exerciseProgressRouter)
+app.use('/evaluation', evaluationRouter)
 
 export default app
