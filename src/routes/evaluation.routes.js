@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { evaluation } from "../controllers/evaluations.controllers.js";
+import { evaluation, unitEvaluation } from "../controllers/evaluations.controllers.js";
 
 const router = Router();
 
-router.post("/", evaluation)
+router.post("/theme", evaluation)
+router.post("/unit", unitEvaluation)
 
 export default router
