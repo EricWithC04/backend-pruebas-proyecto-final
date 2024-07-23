@@ -18,7 +18,7 @@ export const findAllUserProgress = async (idUser) => {
             },
             {
                 model: ThemeModel,
-                attributes: ["id"],
+                attributes: ["id", "unitId"],
                 through: {
                     model: ThemeProgressTable,
                     attributes: ["complete"]
