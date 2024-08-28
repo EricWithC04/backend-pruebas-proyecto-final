@@ -45,7 +45,7 @@ ExerciseProgressTable.belongsTo(ObservationModel, {
 })
 
 const initDataBase = () => {
-    sequelize.sync({ alter: true })
+    sequelize.sync({ alter: true, logging: false })
         .then(() => {
             console.log('Tables created.');
             executeAllSeeds()

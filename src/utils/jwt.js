@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken'
-import { environments } from '../config/enviroments.js'
+import env from '../environments/index.js'
 
 export const createJWT = (payload) => {
     return new Promise((resolve, reject) => {
-        jwt.sign(payload, environments.SECRET, (err, token) => {
+        jwt.sign(payload, env.SECRET, (err, token) => {
             if (err) {
                 reject('Error al firmar el token')
             }
