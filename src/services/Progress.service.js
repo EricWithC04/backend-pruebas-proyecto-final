@@ -1,4 +1,5 @@
 import ProgressModel from "../models/Progress.model.js";
+import UserModel from "../models/User.model.js";
 import UnitModel from "../models/Unit.model.js";
 import UnitProgressTable from "../models/Unit_Progress.table.js";
 import ThemeModel from "../models/Theme.model.js";
@@ -27,4 +28,22 @@ export const findAllUserProgress = async (idUser) => {
         ]
     });
     return allUserProgress;
+}
+
+export const createProgress = async (newUser) => {    
+    const user = await UserModel.findByPk(newUser.id);
+
+    if (!user) {
+        return null
+    }
+
+    const newProgress = await ProgressModel.create({ id: newUser.id });
+
+    if (!newProgress) {
+        return null
+    }
+
+    await user.update({ progressId: newProgress.id });
+
+    return newProgress;
 }

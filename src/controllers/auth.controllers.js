@@ -1,5 +1,7 @@
 import { createUser, getUserByUserNameOrMail, getUserForLogin } from "../services/User.service.js";
+import { createProgress } from "../services/Progress.service.js";
 import { createJWT } from "../utils/jwt.js";
+import { createAllThemeProgressForUser } from "../services/Theme_Progress.service.js";
 
 export const register = async (req, res) => {
     try {
@@ -21,6 +23,17 @@ export const register = async (req, res) => {
                 message: 'No se ha podido registrar el usuario!'
             })
         }
+
+        const userProgress = await createProgress(newUser);
+
+        if (!userProgress) {
+            return res.status(500).send({
+                status: 500,
+                message: 'No se ha podido crear el progreso!'
+            })
+        }
+
+        await createAllThemeProgressForUser(newUser)
 
         return res.status(201).send({ message: 'Usuario Creado Correctamente' });
     } catch (err) {

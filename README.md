@@ -12,6 +12,7 @@ Crear un archivo `.env` en el cuál colocar las variables del archivo `.env.exam
 
 ```env
 PORT=
+SECRET=
 DB_NAME=
 DB_USER=
 DB_PASSWORD=

@@ -13,6 +13,20 @@ export const createThemeProgress = async (data) => {
     return newThemeProgress
 }
 
+export const createAllThemeProgressForUser = async (newUser) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            for (let i = 1; i <= 25; i++) {
+                await ThemeProgressTable.create({ progressId: newUser.id, themeId: i, complete: false })
+            }
+            resolve("Se crearon los progresos para el usuario")
+        } catch (err) {
+            console.error(err);
+            reject(err)
+        }
+    })
+}
+
 export const updateThemeProgress = async (idProgress, idTheme, data) => {
     const updatedThemeProgress = await ThemeProgressTable.update(data, { where: { progressId: idProgress, themeId: idTheme } })
     return updatedThemeProgress
