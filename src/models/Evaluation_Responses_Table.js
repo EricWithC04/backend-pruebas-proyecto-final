@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../config/db.js";
+import sequelize from "../config/db.js";
 
-const EvaluationResponses = sequelize.define("evaluation_responses", {
+const EvaluationResponsesTable = sequelize.define("evaluation_responses", {
     id: {
         type: DataTypes.UUID,
         primaryKey: true,
@@ -10,4 +10,4 @@ const EvaluationResponses = sequelize.define("evaluation_responses", {
 });
 
 
-export default EvaluationResponses;
+export default EvaluationResponsesTable;

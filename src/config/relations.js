@@ -7,6 +7,13 @@ import ProgressModel from "../models/Progress.model.js";
 import UnitProgressTable from "../models/Unit_Progress.table.js";
 import ThemeProgressTable from "../models/Theme_Progress.table.js";
 import ExerciseProgressTable from "../models/Exercise_Progress.table.js";
+
+import QuestionModel from "../models/Questions.model.js";
+import OptionModel from "../models/Options.model.js";
+import EvaluationModel from "../models/Evaluation.model.js";
+import LevelModel from "../models/Levels.model.js";
+import EvaluationResponsesTable from "../models/Evaluation_Responses_Table.js";
+
 import sequelize from "./db.js";
 import executeAllSeeds from "../seeds/index.js";
 import app from "../app.js";
@@ -43,6 +50,24 @@ ExerciseProgressTable.belongsTo(ObservationModel, {
     foreignKey: 'observationsId',
     targetKey: 'id'
 })
+
+LevelModel.hasMany(UserModel, { foreignKey: "levelId" });
+UserModel.belongsTo(LevelModel, { foreignKey: "levelId" });
+
+LevelModel.hasMany(QuestionModel, { foreignKey: "levelId" });
+QuestionModel.belongsTo(LevelModel, { foreignKey: "levelId" });
+
+QuestionModel.hasMany(OptionModel, { foreignKey: "questionId" });
+OptionModel.belongsTo(QuestionModel, { foreignKey: "questionId" });
+
+LevelModel.hasMany(QuestionModel, { foreignKey: "levelId" });
+QuestionModel.hasMany(LevelModel, { foreignKey: "levelId" });
+
+UserModel.hasMany(EvaluationModel, { foreignKey: "userId" });
+EvaluationModel.belongsTo(UserModel, { foreignKey: "userId" });
+
+EvaluationModel.belongsToMany(OptionModel, { through: EvaluationResponsesTable });
+OptionModel.belongsToMany(EvaluationModel, { through: EvaluationResponsesTable });
 
 const initDataBase = () => {
     sequelize.sync({ alter: true, logging: false })

@@ -20,12 +20,12 @@ const UserModel = sequelize.define(
         password: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
+        }/* ,
         level: {
             type: DataTypes.ENUM("LOW", "MEDIUM", "HIGH"),
             allowNull: false,
             defaultValue: "LOW"
-        }
+        } */
     }
 )
 
